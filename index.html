@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tulaku - Tukang Laptop Kutacane | Service Laptop Terpercaya</title>
+<meta name="description" content="Tulaku (Tukang Laptop Kutacane) - Solusi cepat & transparan untuk laptop rusak atau lemot di Kutacane, Aceh Tenggara. Garansi resmi & harga terjangkau.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bgdark: '#0f172a',
+          bgcard: '#1e293b',
+          amber: {
+            DEFAULT: '#f59e0b'
+          },
+          emerald: {
+            DEFAULT: '#10b981'
+          }
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #0f172a; }
+  .gradient-text {
+    background: linear-gradient(90deg, #f59e0b, #10b981);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .glow-amber { box-shadow: 0 0 25px rgba(245, 158, 11, 0.25); }
+  .step-line::after {
+    content: '';
+    position: absolute;
+    top: 1.5rem;
+    left: 100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #f59e0b, transparent);
+  }
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #0f172a; }
+  ::-webkit-scrollbar-thumb { background: #f59e0b; border-radius: 4px; }
+</style>
+</head>
+<body class="bg-bgdark text-slate-200 antialiased">
+
+<!-- ===================== NAVBAR ===================== -->
+<header class="fixed top-0 left-0 w-full z-50 bg-bgdark/90 backdrop-blur-md border-b border-slate-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 md:h-20">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber to-emerald flex items-center justify-center">
+          <i class="fa-solid fa-laptop text-bgdark text-lg"></i>
+        </div>
+        <div class="leading-tight">
+          <p class="font-extrabold text-lg text-white tracking-tight">Tulaku</p>
+          <p class="text-[10px] text-slate-400 -mt-1">Tukang Laptop Kutacane</p>
+        </div>
+      </a>
+
+      <!-- Status Buka -->
+      <div class="hidden lg:flex items-center gap-2 bg-emerald/10 border border-emerald/30 px-3 py-1.5 rounded-full">
+        <span class="relative flex h-2.5 w-2.5">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald"></span>
+        </span>
+        <span class="text-xs font-semibold text-emerald" id="status-toko">Buka Hari Ini</span>
+      </div>
+
+      <!-- Nav Desktop -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#layanan" class="text-sm font-medium text-slate-300 hover:text-amber transition">Layanan</a>
+        <a href="#cara-kerja" class="text-sm font-medium text-slate-300 hover:text-amber transition">Cara Kerja</a>
+        <a href="#cek-resi" class="text-sm font-medium text-slate-300 hover:text-amber transition">Cek Resi</a>
+        <a href="#lokasi" class="text-sm font-medium text-slate-300 hover:text-amber transition">Lokasi</a>
+      </nav>
+
+      <!-- CTA + Hamburger -->
+      <div class="flex items-center gap-3">
+        <a href="https://wa.me/6281234567890?text=Halo%20Tulaku%2C%20saya%20ingin%20bertanya%20tentang%20service%20laptop"
+           target="_blank" rel="noopener"
+           class="hidden sm:inline-flex items-center gap-2 bg-emerald hover:bg-emerald/90 text-bgdark font-bold text-sm px-4 py-2.5 rounded-full transition">
+          <i class="fa-brands fa-whatsapp text-base"></i>
+          <span>WhatsApp</span>
+        </a>
+        <button id="hamburger-btn" class="md:hidden w-10 h-10 flex items-center justify-center rounded-lg border border-slate-700 text-slate-200" aria-label="Buka Menu">
+          <i class="fa-solid fa-bars text-lg" id="hamburger-icon"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden hidden bg-bgcard border-t border-slate-800 px-4 pb-6 pt-2">
+    <div class="flex items-center gap-2 bg-emerald/10 border border-emerald/30 px-3 py-2 rounded-full w-fit mb-4">
+      <span class="relative flex h-2.5 w-2.5">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald"></span>
+      </span>
+      <span class="text-xs font-semibold text-emerald">Buka Hari Ini</span>
+    </div>
+    <nav class="flex flex-col gap-1">
+      <a href="#layanan" class="mobile-link py-3 px-2 rounded-lg text-slate-200 hover:bg-slate-800 hover:text-amber font-medium">
+        <i class="fa-solid fa-screwdriver-wrench w-5"></i> Layanan
+      </a>
+      <a href="#cara-kerja" class="mobile-link py-3 px-2 rounded-lg text-slate-200 hover:bg-slate-800 hover:text-amber font-medium">
+        <i class="fa-solid fa-list-check w-5"></i> Cara Kerja
+      </a>
+      <a href="#cek-resi" class="mobile-link py-3 px-2 rounded-lg text-slate-200 hover:bg-slate-800 hover:text-amber font-medium">
+        <i class="fa-solid fa-magnifying-glass w-5"></i> Cek Resi
+      </a>
+      <a href="#lokasi" class="mobile-link py-3 px-2 rounded-lg text-slate-200 hover:bg-slate-800 hover:text-amber font-medium">
+        <i class="fa-solid fa-location-dot w-5"></i> Lokasi
+      </a>
+      <a href="https://wa.me/6281234567890?text=Halo%20Tulaku%2C%20saya%20ingin%20bertanya%20tentang%20service%20laptop"
+         target="_blank" rel="noopener"
+         class="mt-3 flex items-center justify-center gap-2 bg-emerald text-bgdark font-bold text-sm px-4 py-3 rounded-full">
+        <i class="fa-brands fa-whatsapp text-base"></i> Chat WhatsApp
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===================== HERO SECTION ===================== -->
+<section class="relative pt-32 pb-20 md:pt-44 md:pb-28 overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute -top-20 -left-20 w-72 h-72 bg-amber/20 rounded-full blur-3xl"></div>
+    <div class="absolute top-40 -right-20 w-96 h-96 bg-emerald/20 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl">
+      <div class="inline-flex items-center gap-2 bg-bgcard border border-slate-700 rounded-full px-4 py-1.5 mb-6">
+        <i class="fa-solid fa-shield-halved text-amber"></i>
+        <span class="text-xs md:text-sm font-semibold text-slate-200">Garansi Servis hingga 30 Hari</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold text-white leading-tight tracking-tight">
+        Solusi Cepat & Transparan untuk
+        <span class="gradient-text">Laptop Rusak</span> atau
+        <span class="gradient-text">Lemot</span> di Kutacane
+      </h1>
+
+      <p class="mt-6 text-base md:text-lg text-slate-400 max-w-2xl">
+        Teknisi berpengalaman, spare part berkualitas, dan estimasi biaya jujur sebelum pengerjaan.
+        Laptop kamu diperbaiki dengan cepat tanpa drama, langsung di Kutacane, Aceh Tenggara.
+      </p>
+
+      <div class="mt-8 flex flex-col sm:flex-row gap-4">
+        <a href="#konsultasi"
+           class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber to-orange-500 text-bgdark font-bold px-6 py-4 rounded-xl glow-amber hover:opacity-90 transition">
+          <i class="fa-brands fa-whatsapp text-xl"></i>
+          Konsultasi WhatsApp
+        </a>
+        <a href="#cek-resi"
+           class="inline-flex items-center justify-center gap-2 bg-bgcard border border-slate-700 text-white font-bold px-6 py-4 rounded-xl hover:border-emerald hover:text-emerald transition">
+          <i class="fa-solid fa-receipt text-xl"></i>
+          Cek Status Resi
+        </a>
+      </div>
+
+      <div class="mt-10 grid grid-cols-3 gap-4 max-w-lg">
+        <div>
+          <p class="text-2xl md:text-3xl font-extrabold text-white">1000+</p>
+          <p class="text-xs md:text-sm text-slate-400">Laptop Diperbaiki</p>
+        </div>
+        <div>
+          <p class="text-2xl md:text-3xl font-extrabold text-white">4.9<span class="text-amber">★</span></p>
+          <p class="text-xs md:text-sm text-slate-400">Rating Pelanggan</p>
+        </div>
+        <div>
+          <p class="text-2xl md:text-3xl font-extrabold text-white">30 Hari</p>
+          <p class="text-xs md:text-sm text-slate-400">Garansi Servis</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== KATALOG LAYANAN ===================== -->
+<section id="layanan" class="py-20 md:py-28 bg-bgcard/40 border-y border-slate-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <span class="text-amber font-bold text-sm uppercase tracking-widest">Layanan Kami</span>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-3">Katalog Layanan & Estimasi Biaya</h2>
+      <p class="text-slate-400 mt-4">Harga transparan sejak awal, tanpa biaya tersembunyi. Estimasi final ditentukan setelah diagnosa.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Card 1 -->
+      <div class="group bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition flex flex-col">
+        <div class="w-14 h-14 rounded-xl bg-amber/10 flex items-center justify-center mb-5">
+          <i class="fa-solid fa-microchip text-amber text-2xl"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2">Service Motherboard / Mati Total</h3>
+        <p class="text-sm text-slate-400 mb-4 flex-grow">Diagnosa & perbaikan jalur motherboard, laptop mati total, tidak mau menyala, atau restart sendiri.</p>
+        <div class="flex items-center justify-between text-sm mb-4">
+          <span class="flex items-center gap-1.5 text-slate-400"><i class="fa-regular fa-clock text-emerald"></i> 1-3 Hari</span>
+          <span class="font-bold text-white">Mulai Rp150rb</span>
+        </div>
+        <a href="https://wa.me/6281234567890?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Service%20Motherboard%20%2F%20Mati%20Total"
+           target="_blank" rel="noopener"
+           class="w-full text-center bg-slate-800 group-hover:bg-amber group-hover:text-bgdark text-white font-semibold py-3 rounded-lg transition">
+          Pesan Layanan ini
+        </a>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="group bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition flex flex-col">
+        <div class="w-14 h-14 rounded-xl bg-amber/10 flex items-center justify-center mb-5">
+          <i class="fa-solid fa-display text-amber text-2xl"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2">Ganti Layar LCD / LED</h3>
+        <p class="text-sm text-slate-400 mb-4 flex-grow">Layar pecah, bergaris, blank putih, atau redup. Tersedia berbagai merk & ukuran layar.</p>
+        <div class="flex items-center justify-between text-sm mb-4">
+          <span class="flex items-center gap-1.5 text-slate-400"><i class="fa-regular fa-clock text-emerald"></i> 1 Hari</span>
+          <span class="font-bold text-white">Mulai Rp450rb</span>
+        </div>
+        <a href="https://wa.me/6281234567890?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Ganti%20Layar%20LCD%20%2F%20LED"
+           target="_blank" rel="noopener"
+           class="w-full text-center bg-slate-800 group-hover:bg-amber group-hover:text-bgdark text-white font-semibold py-3 rounded-lg transition">
+          Pesan Layanan ini
+        </a>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="group bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition flex flex-col">
+        <div class="w-14 h-14 rounded-xl bg-amber/10 flex items-center justify-center mb-5">
+          <i class="fa-solid fa-battery-half text-amber text-2xl"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2">Ganti Baterai / Keyboard</h3>
+        <p class="text-sm text-slate-400 mb-4 flex-grow">Baterai boros/drop atau keyboard error, tidak terbaca, dan beberapa tombol tidak berfungsi.</p>
+        <div class="flex items-center justify-between text-sm mb-4">
+          <span class="flex items-center gap-1.5 text-slate-400"><i class="fa-regular fa-clock text-emerald"></i> 1 Hari</span>
+          <span class="font-bold text-white">Mulai Rp250rb</span>
+        </div>
+        <a href="https://wa.me/6281234567890?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Ganti%20Baterai%20%2F%20Keyboard"
+           target="_blank" rel="noopener"
+           class="w-full text-center bg-slate-800 group-hover:bg-amber group-hover:text-bgdark text-white font-semibold py-3 rounded-lg transition">
+          Pesan Layanan ini
+        </a>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="group bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition flex flex-col">
+        <div class="w-14 h-14 rounded-xl bg-amber/10 flex items-center justify-center mb-5">
+          <i class="fa-solid fa-memory text-amber text-2xl"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2">Upgrade SSD & RAM</h3>
+        <p class="text-sm text-slate-400 mb-4 flex-grow">Bikin laptop lemot jadi ngebut. Upgrade ke SSD dan tambah kapasitas RAM sesuai kebutuhan.</p>
+        <div class="flex items-center justify-between text-sm mb-4">
+          <span class="flex items-center gap-1.5 text-slate-400"><i class="fa-regular fa-clock text-emerald"></i> 1-2 Jam</span>
+          <span class="font-bold text-white">Mulai Rp350rb</span>
+        </div>
+        <a href="https://wa.me/6281234567890?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Upgrade%20SSD%20%26%20RAM"
+           target="_blank" rel="noopener"
+           class="w-full text-center bg-slate-800 group-hover:bg-amber group-hover:text-bgdark text-white font-semibold py-3 rounded-lg transition">
+          Pesan Layanan ini
+        </a>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="group bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition flex flex-col">
+        <div class="w-14 h-14 rounded-xl bg-amber/10 flex items-center justify-center mb-5">
+          <i class="fa-solid fa-fan text-amber text-2xl"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2">Pembersihan Dust & Thermal Paste</h3>
+        <p class="text-sm text-slate-400 mb-4 flex-grow">Laptop panas & berisik? Bersihkan debu kipas dan ganti thermal paste agar suhu kembali normal.</p>
+        <div class="flex items-center justify-between text-sm mb-4">
+          <span class="flex items-center gap-1.5 text-slate-400"><i class="fa-regular fa-clock text-emerald"></i> 2-3 Jam</span>
+          <span class="font-bold text-white">Mulai Rp100rb</span>
+        </div>
+        <a href="https://wa.me/6281234567890?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Pembersihan%20Dust%20%26%20Thermal%20Paste"
+           target="_blank" rel="noopener"
+           class="w-full text-center bg-slate-800 group-hover:bg-amber group-hover:text-bgdark text-white font-semibold py-3 rounded-lg transition">
+          Pesan Layanan ini
+        </a>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="group bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition flex flex-col">
+        <div class="w-14 h-14 rounded-xl bg-amber/10 flex items-center justify-center mb-5">
+          <i class="fa-solid fa-download text-amber text-2xl"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2">Install OS & Software</h3>
+        <p class="text-sm text-slate-400 mb-4 flex-grow">Install ulang Windows/Linux, driver lengkap, plus paket aplikasi dan office sesuai kebutuhan.</p>
+        <div class="flex items-center justify-between text-sm mb-4">
+          <span class="flex items-center gap-1.5 text-slate-400"><i class="fa-regular fa-clock text-emerald"></i> 1-2 Jam</span>
+          <span class="font-bold text-white">Mulai Rp75rb</span>
+        </div>
+        <a href="https://wa.me/6281234567890?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Install%20OS%20%26%20Software"
+           target="_blank" rel="noopener"
+           class="w-full text-center bg-slate-800 group-hover:bg-amber group-hover:text-bgdark text-white font-semibold py-3 rounded-lg transition">
+          Pesan Layanan ini
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CARA KERJA ===================== -->
+<section id="cara-kerja" class="py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="text-emerald font-bold text-sm uppercase tracking-widest">Proses Kerja</span>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-3">Cara Kerja Servis di Tulaku</h2>
+      <p class="text-slate-400 mt-4">Empat langkah mudah dari konsultasi sampai laptop kamu kembali normal.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-6">
+      <div class="relative text-center flex flex-col items-center">
+        <div class="w-16 h-16 rounded-2xl bg-bgcard border border-amber/40 flex items-center justify-center text-amber text-2xl font-extrabold mb-4">1</div>
+        <h3 class="font-bold text-white mb-2">Konsultasi</h3>
+        <p class="text-sm text-slate-400">Ceritakan keluhan laptop via WhatsApp atau datang langsung ke toko.</p>
+      </div>
+      <div class="relative text-center flex flex-col items-center">
+        <div class="w-16 h-16 rounded-2xl bg-bgcard border border-amber/40 flex items-center justify-center text-amber text-2xl font-extrabold mb-4">2</div>
+        <h3 class="font-bold text-white mb-2">Diagnosa</h3>
+        <p class="text-sm text-slate-400">Teknisi mengecek kerusakan dan memberi estimasi biaya sebelum pengerjaan.</p>
+      </div>
+      <div class="relative text-center flex flex-col items-center">
+        <div class="w-16 h-16 rounded-2xl bg-bgcard border border-amber/40 flex items-center justify-center text-amber text-2xl font-extrabold mb-4">3</div>
+        <h3 class="font-bold text-white mb-2">Pengerjaan</h3>
+        <p class="text-sm text-slate-400">Perbaikan dikerjakan dengan spare part berkualitas dan progres bisa dipantau.</p>
+      </div>
+      <div class="relative text-center flex flex-col items-center">
+        <div class="w-16 h-16 rounded-2xl bg-bgcard border border-emerald/40 flex items-center justify-center text-emerald text-2xl font-extrabold mb-4">4</div>
+        <h3 class="font-bold text-white mb-2">Selesai & Garansi</h3>
+        <p class="text-sm text-slate-400">Laptop siap diambil dengan garansi servis hingga 30 hari.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FORM KONSULTASI WHATSAPP ===================== -->
+<section id="konsultasi" class="py-20 md:py-28 bg-bgcard/40 border-y border-slate-800">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <span class="text-amber font-bold text-sm uppercase tracking-widest">Konsultasi Gratis</span>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-3">Ceritakan Masalah Laptopmu</h2>
+      <p class="text-slate-400 mt-4">Isi form di bawah ini, pesan akan otomatis terkirim rapi ke WhatsApp kami.</p>
+    </div>
+
+    <form id="form-konsultasi" class="bg-bgdark border border-slate-800 rounded-2xl p-6 md:p-10 space-y-5">
+      <div>
+        <label for="nama" class="block text-sm font-semibold text-slate-300 mb-2">Nama Lengkap</label>
+        <input type="text" id="nama" required placeholder="Contoh: Budi Santoso"
+               class="w-full bg-bgcard border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-amber transition">
+      </div>
+      <div>
+        <label for="tipe-laptop" class="block text-sm font-semibold text-slate-300 mb-2">Tipe Laptop / Merk</label>
+        <input type="text" id="tipe-laptop" required placeholder="Contoh: ASUS Vivobook A14"
+               class="w-full bg-bgcard border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-amber transition">
+      </div>
+      <div>
+        <label for="keluhan" class="block text-sm font-semibold text-slate-300 mb-2">Keluhan Laptop</label>
+        <textarea id="keluhan" required rows="4" placeholder="Contoh: Laptop sering mati sendiri dan layar bergaris"
+                  class="w-full bg-bgcard border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-amber transition resize-none"></textarea>
+      </div>
+      <button type="submit"
+              class="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber to-orange-500 text-bgdark font-bold px-6 py-4 rounded-xl hover:opacity-90 transition">
+        <i class="fa-brands fa-whatsapp text-xl"></i>
+        Kirim ke WhatsApp
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- ===================== CEK STATUS RESI ===================== -->
+<section id="cek-resi" class="py-20 md:py-28">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <span class="text-emerald font-bold text-sm uppercase tracking-widest">Lacak Servis</span>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-3">Cek Status Resi / Nota</h2>
+      <p class="text-slate-400 mt-4">Pantau progres perbaikan laptop kamu secara real-time.</p>
+    </div>
+
+    <div class="bg-bgdark border border-slate-800 rounded-2xl p-6 md:p-10">
+      <div class="flex flex-col sm:flex-row gap-3">
+        <input type="text" id="input-resi" placeholder="Masukkan Nomor Resi/Nota (Contoh: TLK-1001)"
+               class="flex-grow bg-bgcard border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-emerald transition">
+        <button id="btn-cek-resi"
+                class="inline-flex items-center justify-center gap-2 bg-emerald hover:bg-emerald/90 text-bgdark font-bold px-6 py-3 rounded-xl transition whitespace-nowrap">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          Cek Resi
+        </button>
+      </div>
+      <p id="resi-error" class="text-red-400 text-sm mt-3 hidden">Silakan masukkan nomor resi terlebih dahulu.</p>
+
+      <!-- Hasil Cek Resi -->
+      <div id="resi-result" class="hidden mt-8 border-t border-slate-800 pt-8">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-6">
+          <div>
+            <p class="text-sm text-slate-400">Nomor Resi</p>
+            <p class="text-xl font-extrabold text-white" id="resi-nomor">-</p>
+          </div>
+          <div class="bg-amber/10 text-amber text-sm font-bold px-4 py-2 rounded-full w-fit" id="resi-estimasi">
+            Estimasi Selesai: -
+          </div>
+        </div>
+
+        <!-- Step by step -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4">
+          <div class="flex sm:flex-col items-center sm:text-center gap-4 sm:gap-3">
+            <div class="w-12 h-12 rounded-full bg-emerald flex items-center justify-center text-bgdark flex-shrink-0">
+              <i class="fa-solid fa-magnifying-glass-chart"></i>
+            </div>
+            <div>
+              <p class="font-bold text-white">Diagnosa</p>
+              <p class="text-xs text-slate-400">Pengecekan awal kerusakan selesai dilakukan</p>
+            </div>
+          </div>
+          <div class="flex sm:flex-col items-center sm:text-center gap-4 sm:gap-3">
+            <div class="w-12 h-12 rounded-full bg-amber flex items-center justify-center text-bgdark flex-shrink-0" id="step-pengerjaan-icon">
+              <i class="fa-solid fa-screwdriver-wrench"></i>
+            </div>
+            <div>
+              <p class="font-bold text-white">Pengerjaan</p>
+              <p class="text-xs text-slate-400" id="step-pengerjaan-desc">Teknisi sedang memperbaiki unit laptop</p>
+            </div>
+          </div>
+          <div class="flex sm:flex-col items-center sm:text-center gap-4 sm:gap-3">
+            <div class="w-12 h-12 rounded-full bg-slate-700 flex items-center justify-center text-slate-400 flex-shrink-0" id="step-selesai-icon">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div>
+              <p class="font-bold text-white" id="step-selesai-title">Selesai</p>
+              <p class="text-xs text-slate-400" id="step-selesai-desc">Menunggu proses pengerjaan rampung</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 bg-bgcard border border-slate-700 rounded-xl p-5">
+          <p class="text-sm text-slate-300"><span class="font-bold text-white">Catatan Teknisi:</span> <span id="resi-catatan">-</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TESTIMONI ===================== -->
+<section class="py-20 md:py-28 bg-bgcard/40 border-y border-slate-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <span class="text-amber font-bold text-sm uppercase tracking-widest">Testimoni</span>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-3">Apa Kata Pelanggan Kutacane?</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-bgdark border border-slate-800 rounded-2xl p-6">
+        <div class="flex text-amber mb-4">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="text-sm text-slate-300 mb-5">"Laptop mati total dikira udah rusak parah, ternyata cuma masalah motherboard. Dikerjain 2 hari, sekarang lancar lagi. Harga juga sesuai kantong mahasiswa."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-amber to-emerald flex items-center justify-center text-bgdark font-bold">R</div>
+          <div>
+            <p class="text-sm font-bold text-white">Rian Pratama</p>
+            <p class="text-xs text-slate-500">Kutacane, Aceh Tenggara</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-bgdark border border-slate-800 rounded-2xl p-6">
+        <div class="flex text-amber mb-4">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="text-sm text-slate-300 mb-5">"Fitur cek resi online-nya membantu banget, jadi gak perlu bolak-balik ke toko cuma buat nanya progres. Pelayanan ramah dan jujur soal biaya."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-amber to-emerald flex items-center justify-center text-bgdark font-bold">S</div>
+          <div>
+            <p class="text-sm font-bold text-white">Siti Aminah</p>
+            <p class="text-xs text-slate-500">Babussalam, Aceh Tenggara</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-bgdark border border-slate-800 rounded-2xl p-6">
+        <div class="flex text-amber mb-4">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="text-sm text-slate-300 mb-5">"Upgrade SSD di sini, laptop kantor yang tadinya lemot banget sekarang jadi kencang. Prosesnya cuma sejam, langsung ditunggu juga bisa."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-amber to-emerald flex items-center justify-center text-bgdark font-bold">D</div>
+          <div>
+            <p class="text-sm font-bold text-white">Dedi Kurniawan</p>
+            <p class="text-xs text-slate-500">Lawe Sigala-gala, Aceh Tenggara</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LOKASI & JAM OPERASIONAL ===================== -->
+<section id="lokasi" class="py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <span class="text-emerald font-bold text-sm uppercase tracking-widest">Kunjungi Kami</span>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-3">Lokasi Toko & Jam Operasional</h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+      <div class="bg-bgcard border border-slate-800 rounded-2xl p-6 md:p-8 flex flex-col justify-between">
+        <div class="space-y-6">
+          <div class="flex gap-4">
+            <div class="w-12 h-12 rounded-xl bg-amber/10 flex items-center justify-center flex-shrink-0">
+              <i class="fa-solid fa-location-dot text-amber text-xl"></i>
+            </div>
+            <div>
+              <p class="font-bold text-white mb-1">Alamat Toko</p>
+              <p class="text-sm text-slate-400">Jl. Iskandar Muda, Kutacane, Kabupaten Aceh Tenggara, Provinsi Aceh, 24651</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-12 h-12 rounded-xl bg-emerald/10 flex items-center justify-center flex-shrink-0">
+              <i class="fa-regular fa-clock text-emerald text-xl"></i>
+            </div>
+            <div class="text-sm text-slate-400 space-y-1">
+              <p class="font-bold text-white mb-1">Jam Operasional</p>
+              <div class="flex justify-between max-w-xs"><span>Senin - Jumat</span><span class="text-slate-200">09.00 - 20.00 WIB</span></div>
+              <div class="flex justify-between max-w-xs"><span>Sabtu</span><span class="text-slate-200">09.00 - 17.00 WIB</span></div>
+              <div class="flex justify-between max-w-xs"><span>Minggu</span><span class="text-slate-200">Tutup</span></div>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-12 h-12 rounded-xl bg-amber/10 flex items-center justify-center flex-shrink-0">
+              <i class="fa-solid fa-phone text-amber text-xl"></i>
+            </div>
+            <div>
+              <p class="font-bold text-white mb-1">Kontak</p>
+              <p class="text-sm text-slate-400">+62 812-3456-7890</p>
+            </div>
+          </div>
+        </div>
+        <a href="https://wa.me/6281234567890?text=Halo%20Tulaku%2C%20saya%20ingin%20bertanya%20lokasi%20toko"
+           target="_blank" rel="noopener"
+           class="mt-8 inline-flex items-center justify-center gap-2 bg-emerald hover:bg-emerald/90 text-bgdark font-bold px-6 py-3.5 rounded-xl transition">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          Hubungi via WhatsApp
+        </a>
+      </div>
+
+      <div class="rounded-2xl overflow-hidden border border-slate-800 min-h-[350px]">
+        <iframe
+          src="https://www.google.com/maps?q=Kutacane,%20Aceh%20Tenggara&output=embed"
+          width="100%" height="100%" style="border:0; min-height: 350px;"
+          allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Lokasi Tulaku - Tukang Laptop Kutacane">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FLOATING WHATSAPP BUTTON ===================== -->
+<a href="https://wa.me/6281234567890?text=Halo%20Tulaku%2C%20saya%20ingin%20bertanya%20tentang%20service%20laptop"
+   target="_blank" rel="noopener"
+   class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-emerald text-bgdark flex items-center justify-center shadow-lg hover:scale-110 transition"
+   aria-label="Chat WhatsApp">
+  <i class="fa-brands fa-whatsapp text-2xl"></i>
+</a>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-bgcard border-t border-slate-800 pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber to-emerald flex items-center justify-center">
+            <i class="fa-solid fa-laptop text-bgdark text-lg"></i>
+          </div>
+          <div class="leading-tight">
+            <p class="font-extrabold text-lg text-white">Tulaku</p>
+            <p class="text-[10px] text-slate-400 -mt-1">Tukang Laptop Kutacane</p>
+          </div>
+        </div>
+        <p class="text-sm text-slate-400 max-w-sm">Jasa service laptop terpercaya di Kutacane, Aceh Tenggara. Cepat, transparan, dan bergaransi.</p>
+        <div class="flex gap-3 mt-5">
+          <a href="#" class="w-9 h-9 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-amber hover:text-bgdark transition"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="w-9 h-9 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-amber hover:text-bgdark transition"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://wa.me/6281234567890" class="w-9 h-9 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-emerald hover:text-bgdark transition"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://tiktok.com" class="w-9 h-9 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-amber hover:text-bgdark transition"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <p class="font-bold text-white mb-4">Navigasi</p>
+        <ul class="space-y-2 text-sm text-slate-400">
+          <li><a href="#layanan" class="hover:text-amber transition">Layanan</a></li>
+          <li><a href="#cara-kerja" class="hover:text-amber transition">Cara Kerja</a></li>
+          <li><a href="#cek-resi" class="hover:text-amber transition">Cek Resi</a></li>
+          <li><a href="#lokasi" class="hover:text-amber transition">Lokasi</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="font-bold text-white mb-4">Kontak</p>
+        <ul class="space-y-2 text-sm text-slate-400">
+          <li class="flex items-center gap-2"><i class="fa-solid fa-phone text-emerald"></i> +62 812-3456-7890</li>
+          <li class="flex items-center gap-2"><i class="fa-solid fa-envelope text-emerald"></i> info@tulaku.uk</li>
+          <li class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-emerald"></i> Kutacane, Aceh Tenggara</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-slate-800 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
+      <p class="text-xs text-slate-500 text-center sm:text-left">
+        &copy; <span id="tahun-sekarang"></span> Tulaku (Tukang Laptop Kutacane). Hak Cipta Dilindungi.
+      </p>
+      <p class="text-xs text-slate-500">
+        Dikembangkan oleh <a href="https://andriwulandika.uk" target="_blank" rel="noopener" class="text-amber hover:underline">andriwulandika.uk</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ===================== HAMBURGER MENU =====================
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  const hamburgerIcon = document.getElementById('hamburger-icon');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  hamburgerBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+    const isOpen = !mobileMenu.classList.contains('hidden');
+    hamburgerIcon.classList.toggle('fa-bars', !isOpen);
+    hamburgerIcon.classList.toggle('fa-xmark', isOpen);
+  });
+
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      hamburgerIcon.classList.remove('fa-xmark');
+      hamburgerIcon.classList.add('fa-bars');
+    });
+  });
+
+  // ===================== STATUS BUKA TOKO =====================
+  (function setStoreStatus() {
+    const now = new Date();
+    const day = now.getDay(); // 0 = Minggu
+    const hour = now.getHours() + now.getMinutes() / 60;
+    let isOpen = false;
+
+    if (day >= 1 && day <= 5) {
+      isOpen = hour >= 9 && hour < 20;
+    } else if (day === 6) {
+      isOpen = hour >= 9 && hour < 17;
+    }
+
+    const statusEl = document.getElementById('status-toko');
+    if (statusEl) {
+      statusEl.textContent = isOpen ? 'Buka Hari Ini' : 'Tutup Sekarang';
+    }
+  })();
+
+  // ===================== TAHUN FOOTER =====================
+  document.getElementById('tahun-sekarang').textContent = new Date().getFullYear();
+
+  // ===================== FORM KONSULTASI WHATSAPP =====================
+  const NOMOR_WA = '6281234567890';
+  const formKonsultasi = document.getElementById('form-konsultasi');
+
+  formKonsultasi.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const nama = document.getElementById('nama').value.trim();
+    const tipeLaptop = document.getElementById('tipe-laptop').value.trim();
+    const keluhan = document.getElementById('keluhan').value.trim();
+
+    const pesan =
+      `Halo Tulaku, saya ingin konsultasi mengenai laptop saya:\n\n` +
+      `*Nama:* ${nama}\n` +
+      `*Tipe/Merk Laptop:* ${tipeLaptop}\n` +
+      `*Keluhan:* ${keluhan}\n\n` +
+      `Mohon info estimasi biaya dan waktu pengerjaannya. Terima kasih.`;
+
+    const url = `https://wa.me/${NOMOR_WA}?text=${encodeURIComponent(pesan)}`;
+    window.open(url, '_blank');
+  });
+
+  // ===================== CEK STATUS RESI (MOCKUP) =====================
+  const btnCekResi = document.getElementById('btn-cek-resi');
+  const inputResi = document.getElementById('input-resi');
+  const resiError = document.getElementById('resi-error');
+  const resiResult = document.getElementById('resi-result');
+
+  const statusList = [
+    {
+      label: 'Diagnosa Selesai, Menunggu Konfirmasi',
+      pengerjaanDesc: 'Menunggu konfirmasi biaya dari pelanggan',
+      selesaiTitle: 'Belum Selesai',
+      selesaiDesc: 'Menunggu proses pengerjaan dimulai',
+      selesaiActive: false,
+      pengerjaanActive: false,
+      estimasi: '2-3 hari kerja',
+      catatan: 'Kerusakan sudah teridentifikasi. Kami sedang menunggu konfirmasi Anda untuk melanjutkan perbaikan.'
+    },
+    {
+      label: 'Sedang Dikerjakan',
+      pengerjaanDesc: 'Teknisi sedang memperbaiki unit laptop',
+      selesaiTitle: 'Belum Selesai',
+      selesaiDesc: 'Menunggu proses pengerjaan rampung',
+      selesaiActive: false,
+      pengerjaanActive: true,
+      estimasi: 'Besok, sekitar pukul 17.00 WIB',
+      catatan: 'Sparepart sudah tersedia dan teknisi sedang mengerjakan perbaikan unit Anda.'
+    },
+    {
+      label: 'Selesai, Siap Diambil',
+      pengerjaanDesc: 'Pengerjaan telah selesai dilakukan',
+      selesaiTitle: 'Selesai',
+      selesaiDesc: 'Laptop siap diambil di toko',
+      selesaiActive: true,
+      pengerjaanActive: true,
+      estimasi: 'Sudah Selesai',
+      catatan: 'Laptop Anda sudah selesai diperbaiki dan siap diambil. Jangan lupa membawa nota servis.'
+    }
+  ];
+
+  function renderResiResult(nomorResi) {
+    // Simulasi status acak namun konsisten berdasarkan nomor resi
+    let hash = 0;
+    for (let i = 0; i < nomorResi.length; i++) {
+      hash = (hash + nomorResi.charCodeAt(i)) % statusList.length;
+    }
+    const status = statusList[hash];
+
+    document.getElementById('resi-nomor').textContent = nomorResi.toUpperCase();
+    document.getElementById('resi-estimasi').textContent = `Estimasi Selesai: ${status.estimasi}`;
+    document.getElementById('step-pengerjaan-desc').textContent = status.pengerjaanDesc;
+    document.getElementById('step-selesai-title').textContent = status.selesaiTitle;
+    document.getElementById('step-selesai-desc').textContent = status.selesaiDesc;
+    document.getElementById('resi-catatan').textContent = status.catatan;
+
+    const pengerjaanIcon = document.getElementById('step-pengerjaan-icon');
+    const selesaiIcon = document.getElementById('step-selesai-icon');
+
+    pengerjaanIcon.className = status.pengerjaanActive
+      ? 'w-12 h-12 rounded-full bg-amber flex items-center justify-center text-bgdark flex-shrink-0'
+      : 'w-12 h-12 rounded-full bg-slate-700 flex items-center justify-center text-slate-400 flex-shrink-0';
+
+    selesaiIcon.className = status.selesaiActive
+      ? 'w-12 h-12 rounded-full bg-emerald flex items-center justify-center text-bgdark flex-shrink-0'
+      : 'w-12 h-12 rounded-full bg-slate-700 flex items-center justify-center text-slate-400 flex-shrink-0';
+
+    resiResult.classList.remove('hidden');
+  }
+
+  btnCekResi.addEventListener('click', () => {
+    const nomorResi = inputResi.value.trim();
+
+    if (!nomorResi) {
+      resiError.classList.remove('hidden');
+      resiResult.classList.add('hidden');
+      return;
+    }
+
+    resiError.classList.add('hidden');
+    renderResiResult(nomorResi);
+  });
+
+  inputResi.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      btnCekResi.click();
+    }
+  });
+</script>
+
+</body>
+</html>
