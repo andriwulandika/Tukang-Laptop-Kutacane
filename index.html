@@ -6,12 +6,26 @@
 <title>Tulaku - Servis Laptop Panggilan ke Rumah & Kantor di Kutacane</title>
 <meta name="description" content="Tulaku (Tukang Laptop Kutacane) - Servis laptop panggilan ke rumah & kantor di Kutacane. Biaya panggilan Rp20.000-Rp30.000, cek kerusakan gratis, bergaransi.">
 <link rel="icon" type="image/png" href="assets/logo-icon.png">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<!-- AOS (Animate On Scroll) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css">
+
 <script>
   tailwind.config = {
     theme: {
       extend: {
+        fontFamily: {
+          sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          display: ['Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif']
+        },
         colors: {
           bgdark: '#020617',
           bgsurface: '#0f172a',
@@ -51,9 +65,29 @@
   ::-webkit-scrollbar { width: 8px; }
   ::-webkit-scrollbar-track { background: #020617; }
   ::-webkit-scrollbar-thumb { background: #f59e0b; border-radius: 4px; }
+
+  /* Card hover lift */
+  .card-hover { transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
+  .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 40px -18px rgba(0,0,0,.5); }
+
+  /* Hero illustration floating chips */
+  @keyframes floatChip {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  .float-slow { animation: floatChip 6s ease-in-out infinite; }
+  .float-slow-delay { animation: floatChip 6.5s ease-in-out infinite; animation-delay: 1.2s; }
+  .float-slow-delay2 { animation: floatChip 7s ease-in-out infinite; animation-delay: .6s; }
+
+  :focus-visible { outline: 2px solid #10b981; outline-offset: 2px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-aos] { transition: none !important; transform: none !important; opacity: 1 !important; }
+    .float-slow, .float-slow-delay, .float-slow-delay2 { animation: none !important; }
+  }
 </style>
 </head>
-<body class="bg-bgdark text-slate-200 antialiased">
+<body class="bg-bgdark text-slate-200 antialiased font-sans pb-24 md:pb-0">
 
 <!-- ===================== NAVBAR ===================== -->
 <header class="fixed top-0 left-0 w-full z-50 bg-bgdark/90 backdrop-blur-md border-b border-slate-800">
@@ -143,50 +177,97 @@
   </div>
 
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="max-w-3xl">
-      <div class="inline-flex flex-wrap items-center gap-2 bg-bgsurface border border-slate-700 rounded-full px-4 py-2 mb-6">
-        <span class="text-xs md:text-sm font-semibold text-slate-200">🟢 Biaya Panggilan Mulai Rp20.000–Rp30.000 | 🛡️ Garansi Servis Software 3–7 Hari</span>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-14 md:gap-8 items-center">
+
+      <!-- Kolom Teks -->
+      <div>
+        <div class="inline-flex items-center gap-3 bg-gradient-to-r from-emerald/15 to-amber/15 border border-emerald/30 rounded-full pl-3 pr-5 py-2 mb-6 shadow-lg shadow-emerald/5"
+             data-aos="fade-down">
+          <span class="flex items-center justify-center w-7 h-7 rounded-full bg-emerald text-bgdark text-xs flex-shrink-0">
+            <i class="fa-solid fa-check"></i>
+          </span>
+          <span class="text-xs md:text-sm font-semibold text-slate-100">Biaya Panggilan Mulai Rp20.000–Rp30.000 <span class="text-slate-500 mx-1">•</span> Garansi Servis Software 3–7 Hari</span>
+        </div>
+
+        <h1 class="font-display text-3xl sm:text-4xl md:text-6xl font-extrabold text-white leading-tight tracking-tight"
+            data-aos="fade-up" data-aos-delay="80">
+          Servis Laptop <span class="gradient-text">Panggilan</span> ke Rumah & Kantor di Kutacane
+        </h1>
+
+        <p class="mt-6 text-base md:text-lg text-slate-400 max-w-2xl" data-aos="fade-up" data-aos-delay="140">
+          Laptop bermasalah tidak harus dibawa ke tempat servis. Teknisi Tulaku siap datang ke rumah atau kantor Anda di wilayah Kutacane dan sekitarnya. Nikmati pengecekan yang transparan, biaya panggilan terjangkau, serta proses servis yang dapat dipantau melalui website.
+        </p>
+
+        <!-- Trust Badge Row -->
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl" data-aos="fade-up" data-aos-delay="200">
+          <div class="flex items-center gap-3 bg-bgsurface border border-slate-800 rounded-xl px-4 py-3.5 card-hover hover:border-emerald/50">
+            <div class="w-10 h-10 rounded-full bg-emerald/10 flex items-center justify-center flex-shrink-0 text-emerald">
+              <i class="fa-solid fa-tag"></i>
+            </div>
+            <span class="text-sm text-slate-300">Biaya Panggilan Rp20.000–Rp30.000</span>
+          </div>
+          <div class="flex items-center gap-3 bg-bgsurface border border-slate-800 rounded-xl px-4 py-3.5 card-hover hover:border-amber/50">
+            <div class="w-10 h-10 rounded-full bg-amber/10 flex items-center justify-center flex-shrink-0 text-amber">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <span class="text-sm text-slate-300">Garansi Servis Software 3–7 Hari</span>
+          </div>
+          <div class="flex items-center gap-3 bg-bgsurface border border-slate-800 rounded-xl px-4 py-3.5 card-hover hover:border-emerald/50">
+            <div class="w-10 h-10 rounded-full bg-emerald/10 flex items-center justify-center flex-shrink-0 text-emerald">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <span class="text-sm text-slate-300">Cek Kerusakan GRATIS jika lanjut servis</span>
+          </div>
+          <div class="flex items-center gap-3 bg-bgsurface border border-slate-800 rounded-xl px-4 py-3.5 card-hover hover:border-amber/50">
+            <div class="w-10 h-10 rounded-full bg-amber/10 flex items-center justify-center flex-shrink-0 text-amber">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <span class="text-sm text-slate-300">Melayani Kutacane & Sekitarnya</span>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-4" data-aos="fade-up" data-aos-delay="260">
+          <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20panggil%20teknisi%20untuk%20servis%20laptop"
+             target="_blank" rel="noopener"
+             class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald to-amber text-bgdark font-bold px-6 py-4 rounded-xl glow-amber hover:opacity-90 hover:-translate-y-0.5 transition">
+            <i class="fa-brands fa-whatsapp text-lg"></i> Panggil Teknisi Sekarang
+          </a>
+          <a href="#cek-resi"
+             class="inline-flex items-center justify-center gap-2 bg-bgsurface border border-slate-700 text-white font-bold px-6 py-4 rounded-xl hover:border-amber hover:text-amber transition">
+            <i class="fa-solid fa-magnifying-glass"></i> Cek Status Resi
+          </a>
+        </div>
       </div>
 
-      <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold text-white leading-tight tracking-tight">
-        Servis Laptop <span class="gradient-text">Panggilan</span> ke Rumah & Kantor di Kutacane
-      </h1>
+      <!-- Kolom Ilustrasi -->
+      <div class="relative hidden md:block" data-aos="fade-left" data-aos-delay="150">
+        <div class="relative mx-auto max-w-md aspect-square">
+          <div class="absolute inset-0 bg-gradient-to-br from-emerald/20 via-transparent to-amber/20 rounded-[3rem] blur-2xl"></div>
 
-      <p class="mt-6 text-base md:text-lg text-slate-400 max-w-2xl">
-        Laptop bermasalah tidak harus dibawa ke tempat servis. Teknisi Tulaku siap datang ke rumah atau kantor Anda di wilayah Kutacane dan sekitarnya. Nikmati pengecekan yang transparan, biaya panggilan terjangkau, serta proses servis yang dapat dipantau melalui website.
-      </p>
+          <div class="relative h-full bg-bgsurface/80 backdrop-blur border border-slate-700 rounded-[2.5rem] shadow-2xl flex flex-col items-center justify-center gap-6 p-10 overflow-hidden">
+            <div class="absolute inset-0 opacity-[0.06]" style="background-image:radial-gradient(circle,#fff 1px,transparent 1px); background-size:18px 18px;"></div>
+            <div class="relative w-28 h-28 rounded-3xl bg-gradient-to-br from-emerald to-amber flex items-center justify-center shadow-lg">
+              <i class="fa-solid fa-laptop text-5xl text-bgdark"></i>
+            </div>
+            <img src="assets/logo-icon.png" alt="Tulaku" class="relative h-14 w-auto opacity-90">
+            <p class="relative text-sm text-slate-400 text-center max-w-[220px]">Teknisi profesional siap datang ke lokasi Anda di Kutacane</p>
+          </div>
 
-      <!-- Trust Badge Row -->
-      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl">
-        <div class="flex items-center gap-2 bg-bgsurface border border-slate-800 rounded-xl px-4 py-3">
-          <span class="text-lg">🟢</span>
-          <span class="text-sm text-slate-300">Biaya Panggilan Rp20.000–Rp30.000</span>
-        </div>
-        <div class="flex items-center gap-2 bg-bgsurface border border-slate-800 rounded-xl px-4 py-3">
-          <span class="text-lg">🛡️</span>
-          <span class="text-sm text-slate-300">Garansi Servis Software 3–7 Hari</span>
-        </div>
-        <div class="flex items-center gap-2 bg-bgsurface border border-slate-800 rounded-xl px-4 py-3">
-          <span class="text-lg">🔍</span>
-          <span class="text-sm text-slate-300">Cek Kerusakan GRATIS jika lanjut servis</span>
-        </div>
-        <div class="flex items-center gap-2 bg-bgsurface border border-slate-800 rounded-xl px-4 py-3">
-          <span class="text-lg">📍</span>
-          <span class="text-sm text-slate-300">Melayani Kutacane & Sekitarnya</span>
+          <div class="float-slow absolute -top-4 -left-6 bg-bgdark border border-emerald/40 rounded-2xl px-4 py-3 shadow-xl flex items-center gap-2">
+            <i class="fa-solid fa-shield-halved text-emerald"></i>
+            <span class="text-xs font-semibold text-white">Bergaransi</span>
+          </div>
+          <div class="float-slow-delay absolute top-1/3 -right-8 bg-bgdark border border-amber/40 rounded-2xl px-4 py-3 shadow-xl flex items-center gap-2">
+            <i class="fa-solid fa-magnifying-glass text-amber"></i>
+            <span class="text-xs font-semibold text-white">Cek Gratis</span>
+          </div>
+          <div class="float-slow-delay2 absolute -bottom-6 left-1/4 bg-bgdark border border-emerald/40 rounded-2xl px-4 py-3 shadow-xl flex items-center gap-2">
+            <i class="fa-solid fa-bolt text-emerald"></i>
+            <span class="text-xs font-semibold text-white">Respon Cepat</span>
+          </div>
         </div>
       </div>
 
-      <div class="mt-8 flex flex-col sm:flex-row gap-4">
-        <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20panggil%20teknisi%20untuk%20servis%20laptop"
-           target="_blank" rel="noopener"
-           class="inline-flex items-center justify-center gap-2 bg-emerald hover:bg-emerald/90 text-bgdark font-bold px-6 py-4 rounded-xl glow-amber transition">
-          🟢 Panggil Teknisi Sekarang
-        </a>
-        <a href="#cek-resi"
-           class="inline-flex items-center justify-center gap-2 bg-bgsurface border border-slate-700 text-white font-bold px-6 py-4 rounded-xl hover:border-amber hover:text-amber transition">
-          🔵 Cek Status Resi
-        </a>
-      </div>
     </div>
   </div>
 </section>
@@ -194,38 +275,38 @@
 <!-- ===================== MENGAPA TULAKU ===================== -->
 <section id="mengapa" class="py-20 md:py-28 bg-bgsurface/40 border-y border-slate-800">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-2xl mx-auto mb-14">
+    <div class="text-center max-w-2xl mx-auto mb-14" data-aos="fade-up">
       <span class="text-amber font-bold text-sm uppercase tracking-widest">Kenapa Kami</span>
-      <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-3">Mengapa Memilih Tulaku?</h2>
+      <h2 class="font-display text-3xl md:text-4xl font-extrabold text-white mt-3">Mengapa Memilih Tulaku?</h2>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div class="bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition">
-        <div class="w-14 h-14 rounded-xl bg-amber/10 flex items-center justify-center mb-5 text-2xl">
-          🚗
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+      <div class="group bg-bgdark border border-slate-800 rounded-2xl p-8 card-hover hover:border-amber" data-aos="fade-up" data-aos-delay="0">
+        <div class="w-16 h-16 rounded-full bg-amber/10 flex items-center justify-center mb-6 text-2xl group-hover:bg-amber transition-colors">
+          <span class="group-hover:scale-110 transition-transform">🚗</span>
         </div>
-        <h3 class="text-lg font-bold text-white mb-2">Teknisi Datang ke Lokasi</h3>
+        <h3 class="font-display text-lg font-bold text-white mb-2">Teknisi Datang ke Lokasi</h3>
         <p class="text-sm text-slate-400">Tidak perlu repot membawa laptop ke tempat servis. Teknisi kami siap datang ke rumah atau kantor sehingga Anda dapat menghemat waktu dan tenaga.</p>
       </div>
-      <div class="bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition">
-        <div class="w-14 h-14 rounded-xl bg-amber/10 flex items-center justify-center mb-5 text-2xl">
-          💰
+      <div class="group bg-bgdark border border-slate-800 rounded-2xl p-8 card-hover hover:border-emerald" data-aos="fade-up" data-aos-delay="100">
+        <div class="w-16 h-16 rounded-full bg-emerald/10 flex items-center justify-center mb-6 text-2xl group-hover:bg-emerald transition-colors">
+          <span class="group-hover:scale-110 transition-transform">💰</span>
         </div>
-        <h3 class="text-lg font-bold text-white mb-2">Biaya Jelas & Transparan</h3>
+        <h3 class="font-display text-lg font-bold text-white mb-2">Biaya Jelas & Transparan</h3>
         <p class="text-sm text-slate-400">Setiap tindakan dan estimasi biaya akan dijelaskan terlebih dahulu sebelum pengerjaan dimulai. Tidak ada biaya tambahan tanpa persetujuan pelanggan.</p>
       </div>
-      <div class="bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition">
-        <div class="w-14 h-14 rounded-xl bg-amber/10 flex items-center justify-center mb-5 text-2xl">
-          🛡️
+      <div class="group bg-bgdark border border-slate-800 rounded-2xl p-8 card-hover hover:border-amber" data-aos="fade-up" data-aos-delay="200">
+        <div class="w-16 h-16 rounded-full bg-amber/10 flex items-center justify-center mb-6 text-2xl group-hover:bg-amber transition-colors">
+          <span class="group-hover:scale-110 transition-transform">🛡️</span>
         </div>
-        <h3 class="text-lg font-bold text-white mb-2">Garansi Servis</h3>
+        <h3 class="font-display text-lg font-bold text-white mb-2">Garansi Servis</h3>
         <p class="text-sm text-slate-400">Kami memberikan garansi untuk layanan software selama 3–7 hari sesuai jenis pekerjaan. Jika terjadi kendala yang sama selama masa garansi, kami siap membantu.</p>
       </div>
-      <div class="bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition">
-        <div class="w-14 h-14 rounded-xl bg-amber/10 flex items-center justify-center mb-5 text-2xl">
-          🔍
+      <div class="group bg-bgdark border border-slate-800 rounded-2xl p-8 card-hover hover:border-emerald" data-aos="fade-up" data-aos-delay="300">
+        <div class="w-16 h-16 rounded-full bg-emerald/10 flex items-center justify-center mb-6 text-2xl group-hover:bg-emerald transition-colors">
+          <span class="group-hover:scale-110 transition-transform">🔍</span>
         </div>
-        <h3 class="text-lg font-bold text-white mb-2">Cek Kerusakan Gratis</h3>
+        <h3 class="font-display text-lg font-bold text-white mb-2">Cek Kerusakan Gratis</h3>
         <p class="text-sm text-slate-400">Masih ragu dengan kondisi laptop? Kami melakukan pengecekan tanpa biaya apabila Anda melanjutkan proses servis bersama Tulaku.</p>
       </div>
     </div>
@@ -235,30 +316,30 @@
 <!-- ===================== CARA KERJA ===================== -->
 <section id="cara-kerja" class="py-20 md:py-28">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-2xl mx-auto mb-16">
+    <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
       <span class="text-emerald font-bold text-sm uppercase tracking-widest">Proses Kerja</span>
-      <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-3">Cara Kerja Servis Panggilan</h2>
+      <h2 class="font-display text-3xl md:text-4xl font-extrabold text-white mt-3">Cara Kerja Servis Panggilan</h2>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-6">
-      <div class="relative text-center flex flex-col items-center">
+      <div class="relative text-center flex flex-col items-center" data-aos="fade-up" data-aos-delay="0">
         <div class="w-16 h-16 rounded-2xl bg-bgsurface border border-amber/40 flex items-center justify-center text-2xl mb-4">1️⃣</div>
-        <h3 class="font-bold text-white mb-2">Hubungi Kami</h3>
+        <h3 class="font-display font-bold text-white mb-2">Hubungi Kami</h3>
         <p class="text-sm text-slate-400">Kirim pesan melalui WhatsApp atau isi formulir pemesanan. Jelaskan keluhan laptop agar kami dapat mempersiapkan solusi terbaik.</p>
       </div>
-      <div class="relative text-center flex flex-col items-center">
+      <div class="relative text-center flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
         <div class="w-16 h-16 rounded-2xl bg-bgsurface border border-amber/40 flex items-center justify-center text-2xl mb-4">2️⃣</div>
-        <h3 class="font-bold text-white mb-2">Teknisi Datang & Pemeriksaan</h3>
+        <h3 class="font-display font-bold text-white mb-2">Teknisi Datang & Pemeriksaan</h3>
         <p class="text-sm text-slate-400">Teknisi datang ke lokasi sesuai jadwal untuk melakukan pengecekan dan diagnosa kerusakan secara langsung.</p>
       </div>
-      <div class="relative text-center flex flex-col items-center">
+      <div class="relative text-center flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
         <div class="w-16 h-16 rounded-2xl bg-bgsurface border border-amber/40 flex items-center justify-center text-2xl mb-4">3️⃣</div>
-        <h3 class="font-bold text-white mb-2">Estimasi Biaya</h3>
+        <h3 class="font-display font-bold text-white mb-2">Estimasi Biaya</h3>
         <p class="text-sm text-slate-400">Setelah pemeriksaan selesai, kami menjelaskan penyebab kerusakan, estimasi biaya, dan waktu pengerjaan. Proses servis hanya dilakukan setelah Anda menyetujui.</p>
       </div>
-      <div class="relative text-center flex flex-col items-center">
+      <div class="relative text-center flex flex-col items-center" data-aos="fade-up" data-aos-delay="300">
         <div class="w-16 h-16 rounded-2xl bg-bgsurface border border-emerald/40 flex items-center justify-center text-2xl mb-4">4️⃣</div>
-        <h3 class="font-bold text-white mb-2">Laptop Selesai & Bergaransi</h3>
+        <h3 class="font-display font-bold text-white mb-2">Laptop Selesai & Bergaransi</h3>
         <p class="text-sm text-slate-400">Setelah servis selesai, Anda menerima nota serta nomor resi untuk dokumentasi. Pengerjaan dapat dipantau melalui website dan memperoleh garansi sesuai layanan.</p>
       </div>
     </div>
@@ -268,48 +349,48 @@
 <!-- ===================== KATALOG LAYANAN & HARGA ===================== -->
 <section id="layanan" class="py-20 md:py-28 bg-bgsurface/40 border-y border-slate-800">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-2xl mx-auto mb-14">
+    <div class="text-center max-w-2xl mx-auto mb-14" data-aos="fade-up">
       <span class="text-amber font-bold text-sm uppercase tracking-widest">Layanan Kami</span>
-      <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-3">Katalog Layanan & Daftar Harga Resmi</h2>
+      <h2 class="font-display text-3xl md:text-4xl font-extrabold text-white mt-3">Katalog Layanan & Daftar Harga Resmi</h2>
       <p class="text-slate-400 mt-4">Harga transparan sejak awal, tanpa biaya tersembunyi. Estimasi final ditentukan setelah diagnosa.</p>
     </div>
 
     <!-- A. LAYANAN SOFTWARE -->
     <div class="mb-16">
-      <div class="flex items-center gap-3 mb-4">
-        <div class="w-11 h-11 rounded-xl bg-amber/10 flex items-center justify-center text-xl flex-shrink-0">💻</div>
-        <h3 class="text-xl md:text-2xl font-extrabold text-white">A. Layanan Software</h3>
+      <div class="flex items-center gap-3 mb-4" data-aos="fade-up">
+        <div class="w-12 h-12 rounded-full bg-amber/10 flex items-center justify-center text-xl flex-shrink-0">💻</div>
+        <h3 class="font-display text-xl md:text-2xl font-extrabold text-white">A. Layanan Software</h3>
       </div>
-      <p class="text-sm text-slate-400 max-w-3xl mb-6">Laptop mengalami error, sering muncul virus, atau membutuhkan instalasi ulang? Kami melayani instal ulang Windows, Microsoft Office, driver, antivirus, hingga optimasi software agar laptop kembali stabil dan nyaman digunakan.</p>
+      <p class="text-sm text-slate-400 max-w-3xl mb-8" data-aos="fade-up">Laptop mengalami error, sering muncul virus, atau membutuhkan instalasi ulang? Kami melayani instal ulang Windows, Microsoft Office, driver, antivirus, hingga optimasi software agar laptop kembali stabil dan nyaman digunakan.</p>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        <div class="bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition flex flex-col">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-bgdark border border-slate-800 rounded-2xl p-7 card-hover hover:border-amber flex flex-col" data-aos="fade-up" data-aos-delay="0">
           <h4 class="font-bold text-white mb-2">Install Ulang Windows</h4>
           <p class="text-amber font-extrabold text-lg mb-4 flex-grow">Rp 100.000</p>
           <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Install%20Ulang%20Windows" target="_blank" rel="noopener" class="w-full text-center bg-slate-800 hover:bg-amber hover:text-bgdark text-white font-semibold py-3 rounded-lg transition">Pesan Layanan Ini</a>
         </div>
-        <div class="bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition flex flex-col">
+        <div class="bg-bgdark border border-slate-800 rounded-2xl p-7 card-hover hover:border-amber flex flex-col" data-aos="fade-up" data-aos-delay="80">
           <h4 class="font-bold text-white mb-2">Windows + Driver</h4>
           <p class="text-amber font-extrabold text-lg mb-4 flex-grow">Rp 120.000</p>
           <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Windows%20%2B%20Driver" target="_blank" rel="noopener" class="w-full text-center bg-slate-800 hover:bg-amber hover:text-bgdark text-white font-semibold py-3 rounded-lg transition">Pesan Layanan Ini</a>
         </div>
-        <div class="bg-bgdark border border-amber rounded-2xl p-6 hover:border-amber transition flex flex-col relative">
+        <div class="bg-bgdark border border-amber rounded-2xl p-7 card-hover hover:border-amber flex flex-col relative" data-aos="fade-up" data-aos-delay="160">
           <span class="absolute -top-3 right-4 bg-amber text-bgdark text-[10px] font-bold px-2.5 py-1 rounded-full">Paling Laris</span>
           <h4 class="font-bold text-white mb-2">Paket Install Lengkap (Windows + Office + Driver)</h4>
           <p class="text-amber font-extrabold text-lg mb-4 flex-grow">Rp 150.000</p>
           <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Paket%20Install%20Lengkap%20(Windows%20%2B%20Office%20%2B%20Driver)" target="_blank" rel="noopener" class="w-full text-center bg-amber text-bgdark font-semibold py-3 rounded-lg hover:opacity-90 transition">Pesan Layanan Ini</a>
         </div>
-        <div class="bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition flex flex-col">
+        <div class="bg-bgdark border border-slate-800 rounded-2xl p-7 card-hover hover:border-amber flex flex-col" data-aos="fade-up" data-aos-delay="0">
           <h4 class="font-bold text-white mb-2">Install Microsoft Office</h4>
           <p class="text-amber font-extrabold text-lg mb-4 flex-grow">Rp 30.000</p>
           <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Install%20Microsoft%20Office" target="_blank" rel="noopener" class="w-full text-center bg-slate-800 hover:bg-amber hover:text-bgdark text-white font-semibold py-3 rounded-lg transition">Pesan Layanan Ini</a>
         </div>
-        <div class="bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition flex flex-col">
+        <div class="bg-bgdark border border-slate-800 rounded-2xl p-7 card-hover hover:border-amber flex flex-col" data-aos="fade-up" data-aos-delay="80">
           <h4 class="font-bold text-white mb-2">Install Software Tambahan</h4>
           <p class="text-amber font-extrabold text-lg mb-4 flex-grow">Rp 20.000</p>
           <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Install%20Software%20Tambahan" target="_blank" rel="noopener" class="w-full text-center bg-slate-800 hover:bg-amber hover:text-bgdark text-white font-semibold py-3 rounded-lg transition">Pesan Layanan Ini</a>
         </div>
-        <div class="bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition flex flex-col">
+        <div class="bg-bgdark border border-slate-800 rounded-2xl p-7 card-hover hover:border-amber flex flex-col" data-aos="fade-up" data-aos-delay="160">
           <h4 class="font-bold text-white mb-2">Bersih Virus / Malware</h4>
           <p class="text-amber font-extrabold text-lg mb-4 flex-grow">Rp 50.000</p>
           <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Bersih%20Virus%20%2F%20Malware" target="_blank" rel="noopener" class="w-full text-center bg-slate-800 hover:bg-amber hover:text-bgdark text-white font-semibold py-3 rounded-lg transition">Pesan Layanan Ini</a>
@@ -319,29 +400,29 @@
 
     <!-- B. PERFORMA & MAINTENANCE -->
     <div class="mb-16">
-      <div class="flex items-center gap-3 mb-4">
-        <div class="w-11 h-11 rounded-xl bg-emerald/10 flex items-center justify-center text-xl flex-shrink-0">⚡</div>
-        <h3 class="text-xl md:text-2xl font-extrabold text-white">B. Performa & Maintenance</h3>
+      <div class="flex items-center gap-3 mb-4" data-aos="fade-up">
+        <div class="w-12 h-12 rounded-full bg-emerald/10 flex items-center justify-center text-xl flex-shrink-0">⚡</div>
+        <h3 class="font-display text-xl md:text-2xl font-extrabold text-white">B. Performa & Maintenance</h3>
       </div>
-      <p class="text-sm text-slate-400 max-w-3xl mb-6">Laptop terasa lambat, cepat panas, atau kapasitas penyimpanan sudah penuh? Kami menyediakan layanan pembersihan debu, penggantian thermal paste, upgrade SSD, upgrade RAM, serta optimasi performa agar laptop bekerja lebih cepat.</p>
+      <p class="text-sm text-slate-400 max-w-3xl mb-8" data-aos="fade-up">Laptop terasa lambat, cepat panas, atau kapasitas penyimpanan sudah penuh? Kami menyediakan layanan pembersihan debu, penggantian thermal paste, upgrade SSD, upgrade RAM, serta optimasi performa agar laptop bekerja lebih cepat.</p>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        <div class="bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-emerald transition flex flex-col">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-bgdark border border-slate-800 rounded-2xl p-7 card-hover hover:border-emerald flex flex-col" data-aos="fade-up" data-aos-delay="0">
           <h4 class="font-bold text-white mb-2">Mengatasi Laptop Lemot</h4>
           <p class="text-emerald font-extrabold text-lg mb-4 flex-grow">Rp 50.000 - Rp 100.000</p>
           <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Mengatasi%20Laptop%20Lemot" target="_blank" rel="noopener" class="w-full text-center bg-slate-800 hover:bg-emerald hover:text-bgdark text-white font-semibold py-3 rounded-lg transition">Pesan Layanan Ini</a>
         </div>
-        <div class="bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-emerald transition flex flex-col">
+        <div class="bg-bgdark border border-slate-800 rounded-2xl p-7 card-hover hover:border-emerald flex flex-col" data-aos="fade-up" data-aos-delay="80">
           <h4 class="font-bold text-white mb-2">Bersihkan Laptop (Fan & Debu)</h4>
           <p class="text-emerald font-extrabold text-lg mb-4 flex-grow">Rp 80.000</p>
           <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Bersihkan%20Laptop%20(Fan%20%26%20Debu)" target="_blank" rel="noopener" class="w-full text-center bg-slate-800 hover:bg-emerald hover:text-bgdark text-white font-semibold py-3 rounded-lg transition">Pesan Layanan Ini</a>
         </div>
-        <div class="bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-emerald transition flex flex-col">
+        <div class="bg-bgdark border border-slate-800 rounded-2xl p-7 card-hover hover:border-emerald flex flex-col" data-aos="fade-up" data-aos-delay="160">
           <h4 class="font-bold text-white mb-2">Upgrade RAM (Jasa saja)</h4>
           <p class="text-emerald font-extrabold text-lg mb-4 flex-grow">Rp 50.000</p>
           <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Upgrade%20RAM%20(Jasa%20saja)" target="_blank" rel="noopener" class="w-full text-center bg-slate-800 hover:bg-emerald hover:text-bgdark text-white font-semibold py-3 rounded-lg transition">Pesan Layanan Ini</a>
         </div>
-        <div class="bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-emerald transition flex flex-col">
+        <div class="bg-bgdark border border-slate-800 rounded-2xl p-7 card-hover hover:border-emerald flex flex-col" data-aos="fade-up" data-aos-delay="240">
           <h4 class="font-bold text-white mb-2">Upgrade SSD (Jasa saja)</h4>
           <p class="text-emerald font-extrabold text-lg mb-4 flex-grow">Rp 50.000</p>
           <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Upgrade%20SSD%20(Jasa%20saja)" target="_blank" rel="noopener" class="w-full text-center bg-slate-800 hover:bg-emerald hover:text-bgdark text-white font-semibold py-3 rounded-lg transition">Pesan Layanan Ini</a>
@@ -351,19 +432,19 @@
 
     <!-- C. LAYANAN PANGGILAN & CEK -->
     <div>
-      <div class="flex items-center gap-3 mb-4">
-        <div class="w-11 h-11 rounded-xl bg-amber/10 flex items-center justify-center text-xl flex-shrink-0">🚗</div>
-        <h3 class="text-xl md:text-2xl font-extrabold text-white">C. Layanan Panggilan & Cek</h3>
+      <div class="flex items-center gap-3 mb-4" data-aos="fade-up">
+        <div class="w-12 h-12 rounded-full bg-amber/10 flex items-center justify-center text-xl flex-shrink-0">🚗</div>
+        <h3 class="font-display text-xl md:text-2xl font-extrabold text-white">C. Layanan Panggilan & Cek</h3>
       </div>
-      <p class="text-sm text-slate-400 max-w-3xl mb-6">Tidak sempat datang ke tempat servis? Teknisi Tulaku siap datang ke rumah maupun kantor Anda. Nikmati layanan panggilan dengan biaya terjangkau serta pengecekan kerusakan gratis apabila dilanjutkan dengan proses servis.</p>
+      <p class="text-sm text-slate-400 max-w-3xl mb-8" data-aos="fade-up">Tidak sempat datang ke tempat servis? Teknisi Tulaku siap datang ke rumah maupun kantor Anda. Nikmati layanan panggilan dengan biaya terjangkau serta pengecekan kerusakan gratis apabila dilanjutkan dengan proses servis.</p>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <div class="bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition flex flex-col">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="bg-bgdark border border-slate-800 rounded-2xl p-7 card-hover hover:border-amber flex flex-col" data-aos="fade-up" data-aos-delay="0">
           <h4 class="font-bold text-white mb-2">Servis Panggilan ke Rumah/Kantor</h4>
           <p class="text-amber font-extrabold text-lg mb-4 flex-grow">Rp 20.000 - Rp 30.000</p>
           <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Servis%20Panggilan%20ke%20Rumah%2FKantor" target="_blank" rel="noopener" class="w-full text-center bg-slate-800 hover:bg-amber hover:text-bgdark text-white font-semibold py-3 rounded-lg transition">Pesan Layanan Ini</a>
         </div>
-        <div class="bg-bgdark border border-emerald rounded-2xl p-6 hover:border-emerald transition flex flex-col">
+        <div class="bg-bgdark border border-emerald rounded-2xl p-7 card-hover hover:border-emerald flex flex-col" data-aos="fade-up" data-aos-delay="80">
           <h4 class="font-bold text-white mb-2">Cek Kerusakan Laptop</h4>
           <p class="text-emerald font-extrabold text-lg mb-4 flex-grow">GRATIS (Jika Lanjut Servis)</p>
           <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Cek%20Kerusakan%20Laptop" target="_blank" rel="noopener" class="w-full text-center bg-emerald text-bgdark font-semibold py-3 rounded-lg hover:opacity-90 transition">Pesan Layanan Ini</a>
@@ -376,13 +457,13 @@
 <!-- ===================== FORM PEMESANAN TEKNISI PANGGILAN ===================== -->
 <section id="panggil-teknisi" class="py-20 md:py-28">
   <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-12">
+    <div class="text-center mb-12" data-aos="fade-up">
       <span class="text-amber font-bold text-sm uppercase tracking-widest">Panggil Teknisi</span>
-      <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-3">Formulir Pemesanan Teknisi Panggilan</h2>
+      <h2 class="font-display text-3xl md:text-4xl font-extrabold text-white mt-3">Formulir Pemesanan Teknisi Panggilan</h2>
       <p class="text-slate-400 mt-4">Isi form di bawah ini, pesan akan otomatis tersusun rapi dan terkirim ke WhatsApp kami.</p>
     </div>
 
-    <form id="form-panggilan" class="bg-bgsurface border border-slate-800 rounded-2xl p-6 md:p-10 space-y-5">
+    <form id="form-panggilan" class="bg-bgsurface border border-slate-800 rounded-2xl p-6 md:p-10 space-y-5" data-aos="fade-up" data-aos-delay="100">
       <div>
         <label for="nama" class="block text-sm font-semibold text-slate-300 mb-2">Nama Pelanggan</label>
         <input type="text" id="nama" required placeholder="Contoh: Budi Santoso"
@@ -423,7 +504,7 @@
                   class="w-full bg-bgdark border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-amber transition resize-none"></textarea>
       </div>
       <button type="submit"
-              class="w-full inline-flex items-center justify-center gap-2 bg-emerald hover:bg-emerald/90 text-bgdark font-bold px-6 py-4 rounded-xl transition">
+              class="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald to-amber text-bgdark font-bold px-6 py-4 rounded-xl hover:opacity-90 transition">
         <i class="fa-brands fa-whatsapp text-xl"></i>
         Kirim Panggilan via WhatsApp
       </button>
@@ -434,13 +515,13 @@
 <!-- ===================== CEK STATUS RESI ===================== -->
 <section id="cek-resi" class="py-20 md:py-28 bg-bgsurface/40 border-y border-slate-800">
   <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-12">
+    <div class="text-center mb-12" data-aos="fade-up">
       <span class="text-emerald font-bold text-sm uppercase tracking-widest">Lacak Servis</span>
-      <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-3">Cek Status Resi / Nota</h2>
+      <h2 class="font-display text-3xl md:text-4xl font-extrabold text-white mt-3">Cek Status Resi / Nota</h2>
       <p class="text-slate-400 mt-4">Pantau progres perbaikan laptop kamu secara real-time.</p>
     </div>
 
-    <div class="bg-bgdark border border-slate-800 rounded-2xl p-6 md:p-10">
+    <div class="bg-bgdark border border-slate-800 rounded-2xl p-6 md:p-10" data-aos="fade-up" data-aos-delay="100">
       <div class="flex flex-col sm:flex-row gap-3">
         <input type="text" id="input-resi" placeholder="Masukkan Nomor Resi/Nota (Contoh: TLK-1001)"
                class="flex-grow bg-bgsurface border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-emerald transition">
@@ -454,7 +535,7 @@
 
       <!-- Hasil Cek Resi -->
       <div id="resi-result" class="hidden mt-8 border-t border-slate-800 pt-8">
-        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-8">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-10">
           <div>
             <p class="text-sm text-slate-400">Nomor Resi</p>
             <p class="text-xl font-extrabold text-white" id="resi-nomor">-</p>
@@ -464,43 +545,70 @@
           </div>
         </div>
 
-        <!-- Step by step: 4 langkah -->
-        <div class="space-y-5">
-          <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-full bg-emerald flex items-center justify-center text-bgdark flex-shrink-0">
-              <i class="fa-solid fa-check"></i>
+        <!-- Progress Bar Visual -->
+        <div class="overflow-x-auto pb-2">
+          <div class="flex items-center min-w-[420px] sm:min-w-0">
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-emerald flex items-center justify-center text-bgdark shadow-lg shadow-emerald/20 flex-shrink-0">
+                <i class="fa-solid fa-check"></i>
+              </div>
             </div>
-            <div class="pt-1.5">
-              <p class="font-bold text-white">Diagnosa Kerusakan <span class="text-emerald text-xs font-semibold ml-1">(Selesai)</span></p>
-              <p class="text-xs text-slate-400 mt-0.5">Pengecekan awal kerusakan telah selesai dilakukan oleh teknisi.</p>
+            <div class="flex-1 h-1.5 mx-1 sm:mx-2 rounded-full bg-emerald"></div>
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-amber flex items-center justify-center text-bgdark shadow-lg shadow-amber/20 ring-4 ring-amber/20 flex-shrink-0">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+              </div>
             </div>
-          </div>
-          <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-full bg-amber flex items-center justify-center text-bgdark flex-shrink-0">
-              <i class="fa-solid fa-screwdriver-wrench"></i>
+            <div class="flex-1 h-1.5 mx-1 sm:mx-2 rounded-full bg-slate-700"></div>
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-700 flex items-center justify-center text-slate-400 flex-shrink-0">
+                <i class="fa-solid fa-vial"></i>
+              </div>
             </div>
-            <div class="pt-1.5">
-              <p class="font-bold text-white">Proses Pengerjaan <span class="text-amber text-xs font-semibold ml-1">(Sedang Berlangsung)</span></p>
-              <p class="text-xs text-slate-400 mt-0.5">Teknisi sedang mengerjakan perbaikan sesuai kesepakatan.</p>
-            </div>
-          </div>
-          <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center text-slate-400 flex-shrink-0">
-              <i class="fa-solid fa-vial"></i>
-            </div>
-            <div class="pt-1.5">
-              <p class="font-bold text-white">Pengujian & QC <span class="text-slate-500 text-xs font-semibold ml-1">(Belum)</span></p>
-              <p class="text-xs text-slate-400 mt-0.5">Menunggu tahap pengerjaan selesai sebelum pengujian kualitas.</p>
+            <div class="flex-1 h-1.5 mx-1 sm:mx-2 rounded-full bg-slate-700"></div>
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-700 flex items-center justify-center text-slate-400 flex-shrink-0">
+                <i class="fa-solid fa-box-open"></i>
+              </div>
             </div>
           </div>
-          <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center text-slate-400 flex-shrink-0">
-              <i class="fa-solid fa-box-open"></i>
+          <div class="grid grid-cols-4 gap-2 mt-4 text-center min-w-[420px] sm:min-w-0">
+            <div>
+              <p class="text-[11px] sm:text-sm font-bold text-white leading-tight">Diagnosa Kerusakan</p>
+              <p class="text-[10px] sm:text-xs text-emerald font-semibold mt-0.5">(Selesai)</p>
             </div>
-            <div class="pt-1.5">
-              <p class="font-bold text-white">Siap Diambil / Selesai <span class="text-slate-500 text-xs font-semibold ml-1">(Belum)</span></p>
-              <p class="text-xs text-slate-400 mt-0.5">Laptop akan siap diambil setelah seluruh tahapan rampung.</p>
+            <div>
+              <p class="text-[11px] sm:text-sm font-bold text-white leading-tight">Proses Pengerjaan</p>
+              <p class="text-[10px] sm:text-xs text-amber font-semibold mt-0.5">(Sedang Berlangsung)</p>
             </div>
+            <div>
+              <p class="text-[11px] sm:text-sm font-bold text-slate-400 leading-tight">Pengujian & QC</p>
+              <p class="text-[10px] sm:text-xs text-slate-500 font-semibold mt-0.5">(Belum)</p>
+            </div>
+            <div>
+              <p class="text-[11px] sm:text-sm font-bold text-slate-400 leading-tight">Siap Diambil / Selesai</p>
+              <p class="text-[10px] sm:text-xs text-slate-500 font-semibold mt-0.5">(Belum)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detail per tahap -->
+        <div class="mt-8 space-y-3">
+          <div class="flex items-start gap-3 text-sm text-slate-400">
+            <i class="fa-solid fa-circle-check text-emerald mt-0.5 flex-shrink-0"></i>
+            <span>Pengecekan awal kerusakan telah selesai dilakukan oleh teknisi.</span>
+          </div>
+          <div class="flex items-start gap-3 text-sm text-slate-400">
+            <i class="fa-solid fa-circle text-amber mt-0.5 flex-shrink-0"></i>
+            <span>Teknisi sedang mengerjakan perbaikan sesuai kesepakatan.</span>
+          </div>
+          <div class="flex items-start gap-3 text-sm text-slate-500">
+            <i class="fa-regular fa-circle mt-0.5 flex-shrink-0"></i>
+            <span>Menunggu tahap pengerjaan selesai sebelum pengujian kualitas.</span>
+          </div>
+          <div class="flex items-start gap-3 text-sm text-slate-500">
+            <i class="fa-regular fa-circle mt-0.5 flex-shrink-0"></i>
+            <span>Laptop akan siap diambil setelah seluruh tahapan rampung.</span>
           </div>
         </div>
 
@@ -521,13 +629,13 @@
 <!-- ===================== FAQ ===================== -->
 <section id="faq" class="py-20 md:py-28">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-2xl mx-auto mb-14">
+    <div class="text-center max-w-2xl mx-auto mb-14" data-aos="fade-up">
       <span class="text-amber font-bold text-sm uppercase tracking-widest">FAQ</span>
-      <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-3">Pertanyaan yang Sering Diajukan</h2>
+      <h2 class="font-display text-3xl md:text-4xl font-extrabold text-white mt-3">Pertanyaan yang Sering Diajukan</h2>
     </div>
 
     <div class="space-y-4">
-      <div class="accordion-item bg-bgsurface border border-slate-800 rounded-2xl overflow-hidden">
+      <div class="accordion-item bg-bgsurface border border-slate-800 rounded-2xl overflow-hidden hover:border-amber/40 transition" data-aos="fade-up" data-aos-delay="0">
         <button class="accordion-trigger w-full flex items-center justify-between gap-4 text-left px-6 py-5">
           <span class="font-bold text-white">Berapa biaya jika teknisi datang ke rumah atau kantor?</span>
           <i class="fa-solid fa-chevron-down text-amber accordion-icon transition-transform flex-shrink-0"></i>
@@ -537,7 +645,7 @@
         </div>
       </div>
 
-      <div class="accordion-item bg-bgsurface border border-slate-800 rounded-2xl overflow-hidden">
+      <div class="accordion-item bg-bgsurface border border-slate-800 rounded-2xl overflow-hidden hover:border-amber/40 transition" data-aos="fade-up" data-aos-delay="60">
         <button class="accordion-trigger w-full flex items-center justify-between gap-4 text-left px-6 py-5">
           <span class="font-bold text-white">Apakah data di laptop saya aman?</span>
           <i class="fa-solid fa-chevron-down text-amber accordion-icon transition-transform flex-shrink-0"></i>
@@ -547,7 +655,7 @@
         </div>
       </div>
 
-      <div class="accordion-item bg-bgsurface border border-slate-800 rounded-2xl overflow-hidden">
+      <div class="accordion-item bg-bgsurface border border-slate-800 rounded-2xl overflow-hidden hover:border-amber/40 transition" data-aos="fade-up" data-aos-delay="120">
         <button class="accordion-trigger w-full flex items-center justify-between gap-4 text-left px-6 py-5">
           <span class="font-bold text-white">Bagaimana jika setelah dicek saya tidak jadi melakukan servis?</span>
           <i class="fa-solid fa-chevron-down text-amber accordion-icon transition-transform flex-shrink-0"></i>
@@ -557,7 +665,7 @@
         </div>
       </div>
 
-      <div class="accordion-item bg-bgsurface border border-slate-800 rounded-2xl overflow-hidden">
+      <div class="accordion-item bg-bgsurface border border-slate-800 rounded-2xl overflow-hidden hover:border-amber/40 transition" data-aos="fade-up" data-aos-delay="180">
         <button class="accordion-trigger w-full flex items-center justify-between gap-4 text-left px-6 py-5">
           <span class="font-bold text-white">Berapa lama garansi servis?</span>
           <i class="fa-solid fa-chevron-down text-amber accordion-icon transition-transform flex-shrink-0"></i>
@@ -567,7 +675,7 @@
         </div>
       </div>
 
-      <div class="accordion-item bg-bgsurface border border-slate-800 rounded-2xl overflow-hidden">
+      <div class="accordion-item bg-bgsurface border border-slate-800 rounded-2xl overflow-hidden hover:border-amber/40 transition" data-aos="fade-up" data-aos-delay="240">
         <button class="accordion-trigger w-full flex items-center justify-between gap-4 text-left px-6 py-5">
           <span class="font-bold text-white">Bagaimana cara mengecek progres servis laptop saya?</span>
           <i class="fa-solid fa-chevron-down text-amber accordion-icon transition-transform flex-shrink-0"></i>
@@ -582,27 +690,37 @@
 
 <!-- ===================== CLOSING BANNER CTA ===================== -->
 <section class="py-20 md:py-24">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="zoom-in">
     <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-amber/20 via-bgsurface to-emerald/20 border border-slate-700 px-6 py-14 md:px-16 md:py-20 text-center">
-      <h2 class="text-3xl md:text-5xl font-extrabold text-white leading-tight">Laptop Bermasalah? Tidak Perlu Keluar Rumah.</h2>
+      <h2 class="font-display text-3xl md:text-5xl font-extrabold text-white leading-tight">Laptop Bermasalah? Tidak Perlu Keluar Rumah.</h2>
       <p class="mt-5 text-slate-300 max-w-2xl mx-auto text-base md:text-lg">Biarkan teknisi Tulaku datang ke lokasi Anda. Proses cepat, biaya transparan, bergaransi, dan dapat dipantau secara online.</p>
       <p class="mt-3 text-slate-400 font-semibold">WhatsApp Direct: 0811-6605-68</p>
       <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20panggil%20teknisi%20untuk%20servis%20laptop"
          target="_blank" rel="noopener"
-         class="mt-8 inline-flex items-center justify-center gap-2 bg-emerald hover:bg-emerald/90 text-bgdark font-bold px-8 py-4 rounded-xl text-lg glow-amber transition">
-        🟢 Panggil Teknisi Sekarang (WA)
+         class="mt-8 inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald to-amber text-bgdark font-bold px-8 py-4 rounded-xl text-lg glow-amber hover:opacity-90 hover:-translate-y-0.5 transition">
+        <i class="fa-brands fa-whatsapp text-xl"></i> Panggil Teknisi Sekarang (WA)
       </a>
     </div>
   </div>
 </section>
 
-<!-- ===================== FLOATING WHATSAPP BUTTON ===================== -->
+<!-- ===================== FLOATING WHATSAPP BUTTON (DESKTOP) ===================== -->
 <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20bertanya%20tentang%20servis%20laptop"
    target="_blank" rel="noopener"
-   class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-emerald text-bgdark flex items-center justify-center shadow-lg hover:scale-110 transition"
+   class="hidden md:flex fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-gradient-to-br from-emerald to-amber text-bgdark items-center justify-center shadow-lg hover:scale-110 transition"
    aria-label="Chat WhatsApp">
   <i class="fa-brands fa-whatsapp text-2xl"></i>
 </a>
+
+<!-- ===================== STICKY WHATSAPP BAR (MOBILE) ===================== -->
+<div class="md:hidden fixed bottom-0 inset-x-0 z-40 bg-bgsurface/95 backdrop-blur border-t border-slate-800 px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] shadow-[0_-8px_30px_-10px_rgba(0,0,0,0.5)]">
+  <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20bertanya%20tentang%20servis%20laptop"
+     target="_blank" rel="noopener"
+     class="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-emerald to-amber text-bgdark font-bold py-3.5 rounded-xl shadow-lg">
+    <i class="fa-brands fa-whatsapp text-xl"></i>
+    <span>Chat WhatsApp Sekarang</span>
+  </a>
+</div>
 
 <!-- ===================== FOOTER ===================== -->
 <footer class="bg-bgsurface border-t border-slate-800 pt-16 pb-8">
@@ -629,7 +747,18 @@
   </div>
 </footer>
 
+<!-- AOS (Animate On Scroll) -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+
 <script>
+  // ===================== AOS INIT =====================
+  AOS.init({
+    duration: 700,
+    easing: 'ease-out-cubic',
+    once: true,
+    offset: 60
+  });
+
   // ===================== HAMBURGER MENU =====================
   const hamburgerBtn = document.getElementById('hamburger-btn');
   const hamburgerIcon = document.getElementById('hamburger-icon');
@@ -744,6 +873,8 @@
       if (!wasActive) {
         item.classList.add('active');
       }
+
+      setTimeout(() => AOS.refresh(), 400);
     });
   });
 </script>
