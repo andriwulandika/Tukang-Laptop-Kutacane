@@ -15,12 +15,19 @@
 <meta property="og:description" content="Kebiasaan pengisian daya dan penggunaan yang tepat agar kapasitas baterai laptop bertahan lebih lama.">
 <meta property="og:image" content="https://andriwulandika.github.io/Tukang-Laptop-Kutacane/assets/og-image.png">
 <meta name="theme-color" content="#020617">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <script>
   tailwind.config = {
     theme: {
       extend: {
+        fontFamily: {
+          sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          display: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif']
+        },
         colors: {
           bgdark: '#020617',
           bgsurface: '#0f172a',
@@ -34,13 +41,26 @@
 </script>
 <style>
   html { scroll-behavior: smooth; }
-  body { background-color: #020617; }
+  body {
+    background-color: #020617;
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    background-image: radial-gradient(circle at 1px 1px, rgba(148,163,184,0.14) 1px, transparent 0);
+    background-size: 28px 28px;
+  }
+  h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif; letter-spacing: -0.015em; }
   .gradient-text {
     background: linear-gradient(90deg, #f59e0b, #10b981);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
+  .card-surface {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.5), 0 12px 28px -8px rgba(0,0,0,0.55);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .card-surface:hover { transform: translateY(-4px); box-shadow: 0 4px 10px rgba(0,0,0,0.5), 0 20px 36px -8px rgba(0,0,0,0.6); }
+  .btn-whatsapp { box-shadow: 0 1px 2px rgba(0,0,0,0.4), 0 10px 24px -6px rgba(16,185,129,0.35); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.4), 0 16px 32px -6px rgba(16,185,129,0.45); }
   .prose p { margin-bottom: 1.1rem; line-height: 1.8; }
   .prose h2 { margin-top: 2rem; margin-bottom: 0.75rem; }
   .prose ul { margin-bottom: 1.1rem; }
@@ -103,12 +123,12 @@
     </div>
 
     <!-- CTA -->
-    <div class="mt-10 rounded-2xl bg-bgsurface border border-slate-800 p-6 md:p-8 text-center">
+    <div class="card-surface mt-10 rounded-2xl bg-bgsurface border border-slate-800 p-6 md:p-8 text-center">
       <h3 class="text-lg font-bold text-white mb-2">Baterai Laptop Anda Sudah Boros atau Drop?</h3>
       <p class="text-sm text-slate-400 mb-5">Tulaku melayani penggantian baterai laptop langsung di rumah atau kantor Anda di Kutacane.</p>
       <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20baterai%20laptop%20saya%20boros%2Fdrop%20dan%20ingin%20konsultasi"
          target="_blank" rel="noopener"
-         class="inline-flex items-center justify-center gap-2 bg-emerald hover:bg-emerald/90 text-bgdark font-bold px-6 py-3.5 rounded-xl transition">
+         class="btn-whatsapp inline-flex items-center justify-center gap-2 bg-emerald hover:bg-emerald/90 text-bgdark font-bold px-6 py-3.5 rounded-xl transition">
         <i class="fa-brands fa-whatsapp text-lg"></i> Konsultasi via WhatsApp
       </a>
     </div>
@@ -117,11 +137,11 @@
     <div class="mt-14">
       <h3 class="text-lg font-bold text-white mb-5">Artikel Lainnya</h3>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <a href="tanda-laptop-perlu-diservis.html" class="group bg-bgsurface border border-slate-800 rounded-2xl p-5 hover:border-amber transition">
+        <a href="tanda-laptop-perlu-diservis.html" class="card-surface group bg-bgsurface border border-slate-800 rounded-2xl p-5 hover:border-amber transition">
           <span class="text-[11px] font-bold text-amber uppercase tracking-wider">Tips Perawatan</span>
           <h4 class="font-bold text-white mt-1 group-hover:text-amber transition">7 Tanda Laptop Anda Perlu Diservis Segera</h4>
         </a>
-        <a href="laptop-cepat-panas-overheat.html" class="group bg-bgsurface border border-slate-800 rounded-2xl p-5 hover:border-amber transition">
+        <a href="laptop-cepat-panas-overheat.html" class="card-surface group bg-bgsurface border border-slate-800 rounded-2xl p-5 hover:border-amber transition">
           <span class="text-[11px] font-bold text-amber uppercase tracking-wider">Tips Perawatan</span>
           <h4 class="font-bold text-white mt-1 group-hover:text-amber transition">Kenapa Laptop Cepat Panas dan Cara Mengatasinya</h4>
         </a>
@@ -139,8 +159,8 @@
       </div>
       <p class="text-sm text-slate-400">Servis Laptop Panggilan: Cepat • Tepat • Terpercaya</p>
       <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 mt-4 text-sm text-slate-400">
-        <span>📍 Melayani Kutacane & Sekitarnya</span>
-        <span>📱 WhatsApp: 0811-6605-68</span>
+        <span class="inline-flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-amber"></i> Melayani Kutacane & Sekitarnya</span>
+        <span class="inline-flex items-center gap-1.5"><i class="fa-solid fa-mobile-screen-button text-emerald"></i> WhatsApp: 0811-6605-68</span>
       </div>
     </div>
     <div class="border-t border-slate-800 pt-6 space-y-3">

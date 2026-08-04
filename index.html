@@ -57,12 +57,19 @@
 }
 </script>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <script>
   tailwind.config = {
     theme: {
       extend: {
+        fontFamily: {
+          sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          display: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif']
+        },
         colors: {
           bgdark: '#020617',
           bgsurface: '#0f172a',
@@ -80,7 +87,17 @@
 </script>
 <style>
   html { scroll-behavior: smooth; }
-  body { background-color: #020617; }
+  body {
+    background-color: #020617;
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(148,163,184,0.14) 1px, transparent 0);
+    background-size: 28px 28px;
+  }
+  h1, h2, h3, h4, .font-display {
+    font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.015em;
+  }
   .gradient-text {
     background: linear-gradient(90deg, #f59e0b, #10b981);
     -webkit-background-clip: text;
@@ -88,6 +105,32 @@
     color: transparent;
   }
   .glow-amber { box-shadow: 0 0 25px rgba(245, 158, 11, 0.25); }
+  .card-surface {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.5), 0 12px 28px -8px rgba(0,0,0,0.55);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .card-surface:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5), 0 20px 36px -8px rgba(0,0,0,0.6);
+  }
+  .icon-badge {
+    background: linear-gradient(145deg, rgba(245,158,11,0.18), rgba(245,158,11,0.04));
+    border: 1px solid rgba(245,158,11,0.25);
+  }
+  .icon-badge-emerald {
+    background: linear-gradient(145deg, rgba(16,185,129,0.18), rgba(16,185,129,0.04));
+    border: 1px solid rgba(16,185,129,0.25);
+  }
+  .btn-primary {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.4), 0 10px 24px -6px rgba(245,158,11,0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.4), 0 16px 32px -6px rgba(245,158,11,0.45); }
+  .btn-whatsapp {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.4), 0 10px 24px -6px rgba(16,185,129,0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.4), 0 16px 32px -6px rgba(16,185,129,0.45); }
   .accordion-content {
     max-height: 0;
     overflow: hidden;
@@ -218,47 +261,56 @@
 
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="max-w-3xl">
-      <div class="inline-flex flex-wrap items-center gap-2 bg-bgsurface border border-slate-700 rounded-full px-4 py-2 mb-6">
-        <span class="text-xs md:text-sm font-semibold text-slate-200">🟢 Biaya Panggilan Mulai Rp20.000–Rp30.000 | 🛡️ Garansi Servis Software 3–7 Hari</span>
+      <div class="reveal inline-flex flex-wrap items-center gap-x-4 gap-y-1 bg-bgsurface border border-slate-700 rounded-full px-4 py-2 mb-6">
+        <span class="inline-flex items-center gap-1.5 text-xs md:text-sm font-semibold text-slate-200"><i class="fa-solid fa-circle-check text-emerald text-xs"></i> Biaya Panggilan Mulai Rp20.000–Rp30.000</span>
+        <span class="inline-flex items-center gap-1.5 text-xs md:text-sm font-semibold text-slate-200"><i class="fa-solid fa-shield-halved text-amber text-xs"></i> Garansi Servis Software 3–7 Hari</span>
       </div>
 
-      <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold text-white leading-tight tracking-tight">
+      <h1 class="reveal text-3xl sm:text-4xl md:text-6xl font-extrabold text-white leading-tight tracking-tight">
         Servis Laptop <span class="gradient-text">Panggilan</span> ke Rumah & Kantor di Kutacane
       </h1>
 
-      <p class="mt-6 text-base md:text-lg text-slate-400 max-w-2xl">
+      <p class="reveal mt-6 text-base md:text-lg text-slate-400 max-w-2xl">
         Laptop bermasalah tidak harus dibawa ke tempat servis. Teknisi Tulaku siap datang ke rumah atau kantor Anda di wilayah Kutacane dan sekitarnya. Nikmati pengecekan yang transparan, biaya panggilan terjangkau, serta proses servis yang dapat dipantau melalui website.
       </p>
 
       <!-- Trust Badge Row -->
-      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl">
-        <div class="flex items-center gap-2 bg-bgsurface border border-slate-800 rounded-xl px-4 py-3">
-          <span class="text-lg">🟢</span>
+      <div class="reveal mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl">
+        <div class="card-surface flex items-center gap-3 bg-bgsurface border border-slate-800 rounded-xl px-4 py-3">
+          <div class="icon-badge w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-money-bill-wave text-amber text-sm"></i>
+          </div>
           <span class="text-sm text-slate-300">Biaya Panggilan Rp20.000–Rp30.000</span>
         </div>
-        <div class="flex items-center gap-2 bg-bgsurface border border-slate-800 rounded-xl px-4 py-3">
-          <span class="text-lg">🛡️</span>
+        <div class="card-surface flex items-center gap-3 bg-bgsurface border border-slate-800 rounded-xl px-4 py-3">
+          <div class="icon-badge w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-shield-halved text-amber text-sm"></i>
+          </div>
           <span class="text-sm text-slate-300">Garansi Servis Software 3–7 Hari</span>
         </div>
-        <div class="flex items-center gap-2 bg-bgsurface border border-slate-800 rounded-xl px-4 py-3">
-          <span class="text-lg">🔍</span>
+        <div class="card-surface flex items-center gap-3 bg-bgsurface border border-slate-800 rounded-xl px-4 py-3">
+          <div class="icon-badge-emerald w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-magnifying-glass text-emerald text-sm"></i>
+          </div>
           <span class="text-sm text-slate-300">Cek Kerusakan GRATIS jika lanjut servis</span>
         </div>
-        <div class="flex items-center gap-2 bg-bgsurface border border-slate-800 rounded-xl px-4 py-3">
-          <span class="text-lg">📍</span>
+        <div class="card-surface flex items-center gap-3 bg-bgsurface border border-slate-800 rounded-xl px-4 py-3">
+          <div class="icon-badge-emerald w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-location-dot text-emerald text-sm"></i>
+          </div>
           <span class="text-sm text-slate-300">Melayani Kutacane & Sekitarnya</span>
         </div>
       </div>
 
-      <div class="mt-8 flex flex-col sm:flex-row gap-4">
+      <div class="reveal mt-8 flex flex-col sm:flex-row gap-4">
         <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20panggil%20teknisi%20untuk%20servis%20laptop"
            target="_blank" rel="noopener"
-           class="inline-flex items-center justify-center gap-2 bg-emerald hover:bg-emerald/90 text-bgdark font-bold px-6 py-4 rounded-xl glow-amber transition">
-          🟢 Panggil Teknisi Sekarang
+           class="btn-whatsapp inline-flex items-center justify-center gap-2 bg-emerald hover:bg-emerald/90 text-bgdark font-bold px-6 py-4 rounded-xl transition">
+          <i class="fa-brands fa-whatsapp text-lg"></i> Panggil Teknisi Sekarang
         </a>
         <a href="#cek-resi"
            class="inline-flex items-center justify-center gap-2 bg-bgsurface border border-slate-700 text-white font-bold px-6 py-4 rounded-xl hover:border-amber hover:text-amber transition">
-          🔵 Cek Status Resi
+          <i class="fa-solid fa-magnifying-glass text-lg"></i> Cek Status Resi
         </a>
       </div>
     </div>
@@ -277,22 +329,28 @@
       </div>
 
       <div class="reveal grid grid-cols-1 gap-4">
-        <div class="flex items-start gap-4 bg-bgsurface border border-slate-800 rounded-2xl p-5">
-          <div class="w-12 h-12 rounded-xl bg-amber/10 flex items-center justify-center text-2xl flex-shrink-0">🧑‍🔧</div>
+        <div class="card-surface flex items-start gap-4 bg-bgsurface border border-slate-800 rounded-2xl p-5">
+          <div class="icon-badge w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-user-gear text-amber text-lg"></i>
+          </div>
           <div>
             <h3 class="font-bold text-white mb-1">Profesional & Berpengalaman</h3>
             <p class="text-sm text-slate-400">Teknisi kami terbiasa menangani berbagai merk dan tipe laptop, dari masalah software hingga performa hardware.</p>
           </div>
         </div>
-        <div class="flex items-start gap-4 bg-bgsurface border border-slate-800 rounded-2xl p-5">
-          <div class="w-12 h-12 rounded-xl bg-emerald/10 flex items-center justify-center text-2xl flex-shrink-0">🤝</div>
+        <div class="card-surface flex items-start gap-4 bg-bgsurface border border-slate-800 rounded-2xl p-5">
+          <div class="icon-badge-emerald w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-handshake text-emerald text-lg"></i>
+          </div>
           <div>
             <h3 class="font-bold text-white mb-1">Jujur & Transparan</h3>
             <p class="text-sm text-slate-400">Estimasi biaya disampaikan di awal, tanpa tindakan atau biaya tambahan tanpa persetujuan Anda.</p>
           </div>
         </div>
-        <div class="flex items-start gap-4 bg-bgsurface border border-slate-800 rounded-2xl p-5">
-          <div class="w-12 h-12 rounded-xl bg-amber/10 flex items-center justify-center text-2xl flex-shrink-0">📍</div>
+        <div class="card-surface flex items-start gap-4 bg-bgsurface border border-slate-800 rounded-2xl p-5">
+          <div class="icon-badge w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-location-dot text-amber text-lg"></i>
+          </div>
           <div>
             <h3 class="font-bold text-white mb-1">Fokus Melayani Kutacane</h3>
             <p class="text-sm text-slate-400">Berdedikasi melayani warga Kutacane dan sekitarnya, memahami kondisi dan kebutuhan lokal.</p>
@@ -312,30 +370,30 @@
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div class="reveal bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition">
-        <div class="w-14 h-14 rounded-xl bg-amber/10 flex items-center justify-center mb-5 text-2xl">
-          🚗
+      <div class="card-surface reveal bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition">
+        <div class="icon-badge w-14 h-14 rounded-xl flex items-center justify-center mb-5">
+          <i class="fa-solid fa-car-side text-amber text-xl"></i>
         </div>
         <h3 class="text-lg font-bold text-white mb-2">Teknisi Datang ke Lokasi</h3>
         <p class="text-sm text-slate-400">Tidak perlu repot membawa laptop ke tempat servis. Teknisi kami siap datang ke rumah atau kantor sehingga Anda dapat menghemat waktu dan tenaga.</p>
       </div>
-      <div class="reveal bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition">
-        <div class="w-14 h-14 rounded-xl bg-amber/10 flex items-center justify-center mb-5 text-2xl">
-          💰
+      <div class="card-surface reveal bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition">
+        <div class="icon-badge w-14 h-14 rounded-xl flex items-center justify-center mb-5">
+          <i class="fa-solid fa-money-bill-wave text-amber text-xl"></i>
         </div>
         <h3 class="text-lg font-bold text-white mb-2">Biaya Jelas & Transparan</h3>
         <p class="text-sm text-slate-400">Setiap tindakan dan estimasi biaya akan dijelaskan terlebih dahulu sebelum pengerjaan dimulai. Tidak ada biaya tambahan tanpa persetujuan pelanggan.</p>
       </div>
-      <div class="reveal bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition">
-        <div class="w-14 h-14 rounded-xl bg-amber/10 flex items-center justify-center mb-5 text-2xl">
-          🛡️
+      <div class="card-surface reveal bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition">
+        <div class="icon-badge w-14 h-14 rounded-xl flex items-center justify-center mb-5">
+          <i class="fa-solid fa-shield-halved text-amber text-xl"></i>
         </div>
         <h3 class="text-lg font-bold text-white mb-2">Garansi Servis</h3>
         <p class="text-sm text-slate-400">Kami memberikan garansi untuk layanan software selama 3–7 hari sesuai jenis pekerjaan. Jika terjadi kendala yang sama selama masa garansi, kami siap membantu.</p>
       </div>
-      <div class="reveal bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition">
-        <div class="w-14 h-14 rounded-xl bg-amber/10 flex items-center justify-center mb-5 text-2xl">
-          🔍
+      <div class="card-surface reveal bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition">
+        <div class="icon-badge w-14 h-14 rounded-xl flex items-center justify-center mb-5">
+          <i class="fa-solid fa-magnifying-glass text-amber text-xl"></i>
         </div>
         <h3 class="text-lg font-bold text-white mb-2">Cek Kerusakan Gratis</h3>
         <p class="text-sm text-slate-400">Masih ragu dengan kondisi laptop? Kami melakukan pengecekan tanpa biaya apabila Anda melanjutkan proses servis bersama Tulaku.</p>
@@ -354,22 +412,25 @@
 
     <div class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-6">
       <div class="reveal relative text-center flex flex-col items-center">
-        <div class="w-16 h-16 rounded-2xl bg-bgsurface border border-amber/40 flex items-center justify-center text-2xl mb-4">1️⃣</div>
+        <div class="hidden md:block absolute top-8 left-1/2 w-full h-px bg-gradient-to-r from-amber/40 to-transparent"></div>
+        <div class="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-amber to-orange-500 flex items-center justify-center text-xl font-display font-extrabold text-bgdark mb-4 shadow-lg shadow-amber/20">1</div>
         <h3 class="font-bold text-white mb-2">Hubungi Kami</h3>
         <p class="text-sm text-slate-400">Kirim pesan melalui WhatsApp atau isi formulir pemesanan. Jelaskan keluhan laptop agar kami dapat mempersiapkan solusi terbaik.</p>
       </div>
       <div class="reveal relative text-center flex flex-col items-center">
-        <div class="w-16 h-16 rounded-2xl bg-bgsurface border border-amber/40 flex items-center justify-center text-2xl mb-4">2️⃣</div>
+        <div class="hidden md:block absolute top-8 left-1/2 w-full h-px bg-gradient-to-r from-amber/40 to-transparent"></div>
+        <div class="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-amber to-orange-500 flex items-center justify-center text-xl font-display font-extrabold text-bgdark mb-4 shadow-lg shadow-amber/20">2</div>
         <h3 class="font-bold text-white mb-2">Teknisi Datang & Pemeriksaan</h3>
         <p class="text-sm text-slate-400">Teknisi datang ke lokasi sesuai jadwal untuk melakukan pengecekan dan diagnosa kerusakan secara langsung.</p>
       </div>
       <div class="reveal relative text-center flex flex-col items-center">
-        <div class="w-16 h-16 rounded-2xl bg-bgsurface border border-amber/40 flex items-center justify-center text-2xl mb-4">3️⃣</div>
+        <div class="hidden md:block absolute top-8 left-1/2 w-full h-px bg-gradient-to-r from-amber/40 to-transparent"></div>
+        <div class="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-amber to-orange-500 flex items-center justify-center text-xl font-display font-extrabold text-bgdark mb-4 shadow-lg shadow-amber/20">3</div>
         <h3 class="font-bold text-white mb-2">Estimasi Biaya</h3>
         <p class="text-sm text-slate-400">Setelah pemeriksaan selesai, kami menjelaskan penyebab kerusakan, estimasi biaya, dan waktu pengerjaan. Proses servis hanya dilakukan setelah Anda menyetujui.</p>
       </div>
       <div class="reveal relative text-center flex flex-col items-center">
-        <div class="w-16 h-16 rounded-2xl bg-bgsurface border border-emerald/40 flex items-center justify-center text-2xl mb-4">4️⃣</div>
+        <div class="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald to-teal-500 flex items-center justify-center text-xl font-display font-extrabold text-bgdark mb-4 shadow-lg shadow-emerald/20">4</div>
         <h3 class="font-bold text-white mb-2">Laptop Selesai & Bergaransi</h3>
         <p class="text-sm text-slate-400">Setelah servis selesai, Anda menerima nota serta nomor resi untuk dokumentasi. Pengerjaan dapat dipantau melalui website dan memperoleh garansi sesuai layanan.</p>
       </div>
@@ -387,61 +448,61 @@
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div class="reveal bg-bgdark border border-slate-800 rounded-2xl p-6">
+      <div class="card-surface reveal bg-bgdark border border-slate-800 rounded-2xl p-6">
         <div class="flex items-center justify-between gap-3">
           <div class="text-center flex-1">
-            <div class="text-3xl mb-2">💥</div>
+            <div class="w-12 h-12 mx-auto rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center mb-2"><i class="fa-solid fa-display text-red-400"></i></div>
             <span class="inline-block bg-red-500/10 text-red-400 text-[10px] font-bold px-2 py-1 rounded-full">SEBELUM</span>
             <p class="text-xs text-slate-400 mt-2">Layar Retak / Pecah</p>
           </div>
-          <i class="fa-solid fa-arrow-right text-slate-600"></i>
+          <i class="fa-solid fa-arrow-right-long text-slate-600"></i>
           <div class="text-center flex-1">
-            <div class="text-3xl mb-2">🖥️</div>
+            <div class="w-12 h-12 mx-auto rounded-xl icon-badge-emerald flex items-center justify-center mb-2"><i class="fa-solid fa-display text-emerald"></i></div>
             <span class="inline-block bg-emerald/10 text-emerald text-[10px] font-bold px-2 py-1 rounded-full">SESUDAH</span>
             <p class="text-xs text-slate-400 mt-2">Layar Baru & Jernih</p>
           </div>
         </div>
       </div>
-      <div class="reveal bg-bgdark border border-slate-800 rounded-2xl p-6">
+      <div class="card-surface reveal bg-bgdark border border-slate-800 rounded-2xl p-6">
         <div class="flex items-center justify-between gap-3">
           <div class="text-center flex-1">
-            <div class="text-3xl mb-2">⚫</div>
+            <div class="w-12 h-12 mx-auto rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center mb-2"><i class="fa-solid fa-power-off text-red-400"></i></div>
             <span class="inline-block bg-red-500/10 text-red-400 text-[10px] font-bold px-2 py-1 rounded-full">SEBELUM</span>
             <p class="text-xs text-slate-400 mt-2">Laptop Mati Total</p>
           </div>
-          <i class="fa-solid fa-arrow-right text-slate-600"></i>
+          <i class="fa-solid fa-arrow-right-long text-slate-600"></i>
           <div class="text-center flex-1">
-            <div class="text-3xl mb-2">✅</div>
+            <div class="w-12 h-12 mx-auto rounded-xl icon-badge-emerald flex items-center justify-center mb-2"><i class="fa-solid fa-circle-check text-emerald"></i></div>
             <span class="inline-block bg-emerald/10 text-emerald text-[10px] font-bold px-2 py-1 rounded-full">SESUDAH</span>
             <p class="text-xs text-slate-400 mt-2">Menyala Normal</p>
           </div>
         </div>
       </div>
-      <div class="reveal bg-bgdark border border-slate-800 rounded-2xl p-6">
+      <div class="card-surface reveal bg-bgdark border border-slate-800 rounded-2xl p-6">
         <div class="flex items-center justify-between gap-3">
           <div class="text-center flex-1">
-            <div class="text-3xl mb-2">🐢</div>
+            <div class="w-12 h-12 mx-auto rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center mb-2"><i class="fa-solid fa-gauge-simple-low text-red-400"></i></div>
             <span class="inline-block bg-red-500/10 text-red-400 text-[10px] font-bold px-2 py-1 rounded-full">SEBELUM</span>
             <p class="text-xs text-slate-400 mt-2">Laptop Lemot & Lag</p>
           </div>
-          <i class="fa-solid fa-arrow-right text-slate-600"></i>
+          <i class="fa-solid fa-arrow-right-long text-slate-600"></i>
           <div class="text-center flex-1">
-            <div class="text-3xl mb-2">🚀</div>
+            <div class="w-12 h-12 mx-auto rounded-xl icon-badge-emerald flex items-center justify-center mb-2"><i class="fa-solid fa-gauge-high text-emerald"></i></div>
             <span class="inline-block bg-emerald/10 text-emerald text-[10px] font-bold px-2 py-1 rounded-full">SESUDAH</span>
             <p class="text-xs text-slate-400 mt-2">Performa Ngebut</p>
           </div>
         </div>
       </div>
-      <div class="reveal bg-bgdark border border-slate-800 rounded-2xl p-6">
+      <div class="card-surface reveal bg-bgdark border border-slate-800 rounded-2xl p-6">
         <div class="flex items-center justify-between gap-3">
           <div class="text-center flex-1">
-            <div class="text-3xl mb-2">🔋</div>
+            <div class="w-12 h-12 mx-auto rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center mb-2"><i class="fa-solid fa-battery-quarter text-red-400"></i></div>
             <span class="inline-block bg-red-500/10 text-red-400 text-[10px] font-bold px-2 py-1 rounded-full">SEBELUM</span>
             <p class="text-xs text-slate-400 mt-2">Baterai Boros / Drop</p>
           </div>
-          <i class="fa-solid fa-arrow-right text-slate-600"></i>
+          <i class="fa-solid fa-arrow-right-long text-slate-600"></i>
           <div class="text-center flex-1">
-            <div class="text-3xl mb-2">🔌</div>
+            <div class="w-12 h-12 mx-auto rounded-xl icon-badge-emerald flex items-center justify-center mb-2"><i class="fa-solid fa-battery-full text-emerald"></i></div>
             <span class="inline-block bg-emerald/10 text-emerald text-[10px] font-bold px-2 py-1 rounded-full">SESUDAH</span>
             <p class="text-xs text-slate-400 mt-2">Baterai Baru, Awet</p>
           </div>
@@ -463,39 +524,41 @@
     <!-- A. LAYANAN SOFTWARE -->
     <div class="reveal mb-16">
       <div class="flex items-center gap-3 mb-4">
-        <div class="w-11 h-11 rounded-xl bg-amber/10 flex items-center justify-center text-xl flex-shrink-0">💻</div>
+        <div class="icon-badge w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fa-solid fa-laptop text-amber"></i>
+        </div>
         <h3 class="text-xl md:text-2xl font-extrabold text-white">A. Layanan Software</h3>
       </div>
       <p class="text-sm text-slate-400 max-w-3xl mb-6">Laptop mengalami error, sering muncul virus, atau membutuhkan instalasi ulang? Kami melayani instal ulang Windows, Microsoft Office, driver, antivirus, hingga optimasi software agar laptop kembali stabil dan nyaman digunakan.</p>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        <div class="bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition flex flex-col">
+        <div class="card-surface bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition flex flex-col">
           <h4 class="font-bold text-white mb-2">Install Ulang Windows</h4>
           <p class="text-amber font-extrabold text-lg mb-4 flex-grow">Rp 100.000</p>
           <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Install%20Ulang%20Windows" target="_blank" rel="noopener" class="w-full text-center bg-slate-800 hover:bg-amber hover:text-bgdark text-white font-semibold py-3 rounded-lg transition">Pesan Layanan Ini</a>
         </div>
-        <div class="bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition flex flex-col">
+        <div class="card-surface bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition flex flex-col">
           <h4 class="font-bold text-white mb-2">Windows + Driver</h4>
           <p class="text-amber font-extrabold text-lg mb-4 flex-grow">Rp 120.000</p>
           <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Windows%20%2B%20Driver" target="_blank" rel="noopener" class="w-full text-center bg-slate-800 hover:bg-amber hover:text-bgdark text-white font-semibold py-3 rounded-lg transition">Pesan Layanan Ini</a>
         </div>
-        <div class="bg-bgdark border border-amber rounded-2xl p-6 hover:border-amber transition flex flex-col relative">
+        <div class="card-surface bg-bgdark border border-amber rounded-2xl p-6 hover:border-amber transition flex flex-col relative">
           <span class="absolute -top-3 right-4 bg-amber text-bgdark text-[10px] font-bold px-2.5 py-1 rounded-full">Paling Laris</span>
           <h4 class="font-bold text-white mb-2">Paket Install Lengkap (Windows + Office + Driver)</h4>
           <p class="text-amber font-extrabold text-lg mb-4 flex-grow">Rp 150.000</p>
           <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Paket%20Install%20Lengkap%20(Windows%20%2B%20Office%20%2B%20Driver)" target="_blank" rel="noopener" class="w-full text-center bg-amber text-bgdark font-semibold py-3 rounded-lg hover:opacity-90 transition">Pesan Layanan Ini</a>
         </div>
-        <div class="bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition flex flex-col">
+        <div class="card-surface bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition flex flex-col">
           <h4 class="font-bold text-white mb-2">Install Microsoft Office</h4>
           <p class="text-amber font-extrabold text-lg mb-4 flex-grow">Rp 30.000</p>
           <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Install%20Microsoft%20Office" target="_blank" rel="noopener" class="w-full text-center bg-slate-800 hover:bg-amber hover:text-bgdark text-white font-semibold py-3 rounded-lg transition">Pesan Layanan Ini</a>
         </div>
-        <div class="bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition flex flex-col">
+        <div class="card-surface bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition flex flex-col">
           <h4 class="font-bold text-white mb-2">Install Software Tambahan</h4>
           <p class="text-amber font-extrabold text-lg mb-4 flex-grow">Rp 20.000</p>
           <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Install%20Software%20Tambahan" target="_blank" rel="noopener" class="w-full text-center bg-slate-800 hover:bg-amber hover:text-bgdark text-white font-semibold py-3 rounded-lg transition">Pesan Layanan Ini</a>
         </div>
-        <div class="bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition flex flex-col">
+        <div class="card-surface bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition flex flex-col">
           <h4 class="font-bold text-white mb-2">Bersih Virus / Malware</h4>
           <p class="text-amber font-extrabold text-lg mb-4 flex-grow">Rp 50.000</p>
           <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Bersih%20Virus%20%2F%20Malware" target="_blank" rel="noopener" class="w-full text-center bg-slate-800 hover:bg-amber hover:text-bgdark text-white font-semibold py-3 rounded-lg transition">Pesan Layanan Ini</a>
@@ -506,28 +569,30 @@
     <!-- B. PERFORMA & MAINTENANCE -->
     <div class="reveal mb-16">
       <div class="flex items-center gap-3 mb-4">
-        <div class="w-11 h-11 rounded-xl bg-emerald/10 flex items-center justify-center text-xl flex-shrink-0">⚡</div>
+        <div class="icon-badge-emerald w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fa-solid fa-bolt text-emerald"></i>
+        </div>
         <h3 class="text-xl md:text-2xl font-extrabold text-white">B. Performa & Maintenance</h3>
       </div>
       <p class="text-sm text-slate-400 max-w-3xl mb-6">Laptop terasa lambat, cepat panas, atau kapasitas penyimpanan sudah penuh? Kami menyediakan layanan pembersihan debu, penggantian thermal paste, upgrade SSD, upgrade RAM, serta optimasi performa agar laptop bekerja lebih cepat.</p>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        <div class="bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-emerald transition flex flex-col">
+        <div class="card-surface bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-emerald transition flex flex-col">
           <h4 class="font-bold text-white mb-2">Mengatasi Laptop Lemot</h4>
           <p class="text-emerald font-extrabold text-lg mb-4 flex-grow">Rp 50.000 - Rp 100.000</p>
           <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Mengatasi%20Laptop%20Lemot" target="_blank" rel="noopener" class="w-full text-center bg-slate-800 hover:bg-emerald hover:text-bgdark text-white font-semibold py-3 rounded-lg transition">Pesan Layanan Ini</a>
         </div>
-        <div class="bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-emerald transition flex flex-col">
+        <div class="card-surface bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-emerald transition flex flex-col">
           <h4 class="font-bold text-white mb-2">Bersihkan Laptop (Fan & Debu)</h4>
           <p class="text-emerald font-extrabold text-lg mb-4 flex-grow">Rp 80.000</p>
           <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Bersihkan%20Laptop%20(Fan%20%26%20Debu)" target="_blank" rel="noopener" class="w-full text-center bg-slate-800 hover:bg-emerald hover:text-bgdark text-white font-semibold py-3 rounded-lg transition">Pesan Layanan Ini</a>
         </div>
-        <div class="bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-emerald transition flex flex-col">
+        <div class="card-surface bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-emerald transition flex flex-col">
           <h4 class="font-bold text-white mb-2">Upgrade RAM (Jasa saja)</h4>
           <p class="text-emerald font-extrabold text-lg mb-4 flex-grow">Rp 50.000</p>
           <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Upgrade%20RAM%20(Jasa%20saja)" target="_blank" rel="noopener" class="w-full text-center bg-slate-800 hover:bg-emerald hover:text-bgdark text-white font-semibold py-3 rounded-lg transition">Pesan Layanan Ini</a>
         </div>
-        <div class="bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-emerald transition flex flex-col">
+        <div class="card-surface bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-emerald transition flex flex-col">
           <h4 class="font-bold text-white mb-2">Upgrade SSD (Jasa saja)</h4>
           <p class="text-emerald font-extrabold text-lg mb-4 flex-grow">Rp 50.000</p>
           <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Upgrade%20SSD%20(Jasa%20saja)" target="_blank" rel="noopener" class="w-full text-center bg-slate-800 hover:bg-emerald hover:text-bgdark text-white font-semibold py-3 rounded-lg transition">Pesan Layanan Ini</a>
@@ -538,18 +603,20 @@
     <!-- C. LAYANAN PANGGILAN & CEK -->
     <div class="reveal">
       <div class="flex items-center gap-3 mb-4">
-        <div class="w-11 h-11 rounded-xl bg-amber/10 flex items-center justify-center text-xl flex-shrink-0">🚗</div>
+        <div class="icon-badge w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fa-solid fa-car-side text-amber"></i>
+        </div>
         <h3 class="text-xl md:text-2xl font-extrabold text-white">C. Layanan Panggilan & Cek</h3>
       </div>
       <p class="text-sm text-slate-400 max-w-3xl mb-6">Tidak sempat datang ke tempat servis? Teknisi Tulaku siap datang ke rumah maupun kantor Anda. Nikmati layanan panggilan dengan biaya terjangkau serta pengecekan kerusakan gratis apabila dilanjutkan dengan proses servis.</p>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <div class="bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition flex flex-col">
+        <div class="card-surface bg-bgdark border border-slate-800 rounded-2xl p-6 hover:border-amber transition flex flex-col">
           <h4 class="font-bold text-white mb-2">Servis Panggilan ke Rumah/Kantor</h4>
           <p class="text-amber font-extrabold text-lg mb-4 flex-grow">Rp 20.000 - Rp 30.000</p>
           <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Servis%20Panggilan%20ke%20Rumah%2FKantor" target="_blank" rel="noopener" class="w-full text-center bg-slate-800 hover:bg-amber hover:text-bgdark text-white font-semibold py-3 rounded-lg transition">Pesan Layanan Ini</a>
         </div>
-        <div class="bg-bgdark border border-emerald rounded-2xl p-6 hover:border-emerald transition flex flex-col">
+        <div class="card-surface bg-bgdark border border-emerald rounded-2xl p-6 hover:border-emerald transition flex flex-col">
           <h4 class="font-bold text-white mb-2">Cek Kerusakan Laptop</h4>
           <p class="text-emerald font-extrabold text-lg mb-4 flex-grow">GRATIS (Jika Lanjut Servis)</p>
           <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20pesan%20layanan%20Cek%20Kerusakan%20Laptop" target="_blank" rel="noopener" class="w-full text-center bg-emerald text-bgdark font-semibold py-3 rounded-lg hover:opacity-90 transition">Pesan Layanan Ini</a>
@@ -568,7 +635,7 @@
       <p class="text-slate-400 mt-4">Isi form di bawah ini, pesan akan otomatis tersusun rapi dan terkirim ke WhatsApp kami.</p>
     </div>
 
-    <form id="form-panggilan" class="reveal bg-bgsurface border border-slate-800 rounded-2xl p-6 md:p-10 space-y-5">
+    <form id="form-panggilan" class="card-surface reveal bg-bgsurface border border-slate-800 rounded-2xl p-6 md:p-10 space-y-5">
       <div>
         <label for="nama" class="block text-sm font-semibold text-slate-300 mb-2">Nama Pelanggan</label>
         <input type="text" id="nama" required placeholder="Contoh: Budi Santoso"
@@ -609,7 +676,7 @@
                   class="w-full bg-bgdark border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-amber transition resize-none"></textarea>
       </div>
       <button type="submit"
-              class="w-full inline-flex items-center justify-center gap-2 bg-emerald hover:bg-emerald/90 text-bgdark font-bold px-6 py-4 rounded-xl transition">
+              class="btn-whatsapp w-full inline-flex items-center justify-center gap-2 bg-emerald hover:bg-emerald/90 text-bgdark font-bold px-6 py-4 rounded-xl transition">
         <i class="fa-brands fa-whatsapp text-xl"></i>
         Kirim Panggilan via WhatsApp
       </button>
@@ -626,7 +693,7 @@
       <p class="text-slate-400 mt-4">Pantau progres perbaikan laptop kamu secara real-time.</p>
     </div>
 
-    <div class="reveal bg-bgdark border border-slate-800 rounded-2xl p-6 md:p-10">
+    <div class="card-surface reveal bg-bgdark border border-slate-800 rounded-2xl p-6 md:p-10">
       <div class="flex flex-col sm:flex-row gap-3">
         <input type="text" id="input-resi" placeholder="Masukkan Nomor Resi/Nota (Contoh: TLK-1001)"
                class="flex-grow bg-bgsurface border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-emerald transition">
@@ -770,13 +837,16 @@
 <section class="py-20 md:py-24">
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="reveal relative overflow-hidden rounded-3xl bg-gradient-to-br from-amber/20 via-bgsurface to-emerald/20 border border-slate-700 px-6 py-14 md:px-16 md:py-20 text-center">
+      <div class="icon-badge-emerald w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6">
+        <i class="fa-brands fa-whatsapp text-emerald text-2xl"></i>
+      </div>
       <h2 class="text-3xl md:text-5xl font-extrabold text-white leading-tight">Laptop Bermasalah? Tidak Perlu Keluar Rumah.</h2>
       <p class="mt-5 text-slate-300 max-w-2xl mx-auto text-base md:text-lg">Biarkan teknisi Tulaku datang ke lokasi Anda. Proses cepat, biaya transparan, bergaransi, dan dapat dipantau secara online.</p>
       <p class="mt-3 text-slate-400 font-semibold">WhatsApp Direct: 0811-6605-68</p>
       <a href="https://wa.me/62811660568?text=Halo%20Tulaku%2C%20saya%20ingin%20panggil%20teknisi%20untuk%20servis%20laptop"
          target="_blank" rel="noopener"
-         class="mt-8 inline-flex items-center justify-center gap-2 bg-emerald hover:bg-emerald/90 text-bgdark font-bold px-8 py-4 rounded-xl text-lg glow-amber transition">
-        🟢 Panggil Teknisi Sekarang (WA)
+         class="btn-whatsapp mt-8 inline-flex items-center justify-center gap-2 bg-emerald hover:bg-emerald/90 text-bgdark font-bold px-8 py-4 rounded-xl text-lg transition">
+        <i class="fa-brands fa-whatsapp text-xl"></i> Panggil Teknisi Sekarang (WA)
       </a>
     </div>
   </div>
@@ -799,8 +869,8 @@
       </div>
       <p class="text-sm text-slate-400">Servis Laptop Panggilan: Cepat • Tepat • Terpercaya</p>
       <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 mt-4 text-sm text-slate-400">
-        <span>📍 Melayani Kutacane & Sekitarnya</span>
-        <span>📱 WhatsApp: 0811-6605-68</span>
+        <span class="inline-flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-amber"></i> Melayani Kutacane & Sekitarnya</span>
+        <span class="inline-flex items-center gap-1.5"><i class="fa-solid fa-mobile-screen-button text-emerald"></i> WhatsApp: 0811-6605-68</span>
       </div>
     </div>
 
