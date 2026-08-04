@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://andriwulandika.github.io/Tukang-Laptop-Kutacane/sitemap.xml
